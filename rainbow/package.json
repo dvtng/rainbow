@@ -11,6 +11,10 @@
   },
   "author": "David Tang",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:dvtng/rainbow.git"
+  },
   "dependencies": {
     "@types/react": "^15.0.30",
     "@types/react-dom": "^15.5.0",
