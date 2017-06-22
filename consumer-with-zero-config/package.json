@@ -1,0 +1,13 @@
+{
+  "name": "consumer-with-zero-config",
+  "version": "1.0.0",
+  "scripts": {
+    "rainbow": "rainbow"
+  },
+  "devDependencies": {
+    "rainbow": "file:../rainbow"
+  },
+  "dependencies": {
+    "react": "^15.6.1"
+  }
+}
