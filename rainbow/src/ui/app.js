@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Typography from './typography';
-import Nav from './nav';
+import Container from './nav';
 import Scene from './scene';
 
 const Frame = Typography.extend`
@@ -10,8 +10,10 @@ const Frame = Typography.extend`
     height: 100%;
 `;
 
-export default () =>
+const App = () =>
     <Frame>
-        <Nav />
+        <Container />
         <Scene />
     </Frame>;
+
+export default App;
