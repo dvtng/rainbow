@@ -1,8 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
+import ExplorerItem from './explorer-item';
 
 const Container = styled.div`
     color: #fff;
+`;
+
+const Ul = styled.ul`
+    margin: 0;
+    padding-left: 22px;
 `;
 
 const Li = styled.li`
@@ -13,16 +19,16 @@ const isDir = file => file.children && file.children.length;
 
 const Dir = ({ name, children }) =>
     <Container>
-        {name}
-        <ul>
+        <ExplorerItem>{name}</ExplorerItem>
+        <Ul>
             {children.map(child =>
                 <Li key={child.name}>
                     {isDir(child)
                         ? <Dir name={child.name}>{child.children}</Dir>
-                        : child.name}
+                        : <ExplorerItem>{child.name}</ExplorerItem>}
                 </Li>
             )}
-        </ul>
+        </Ul>
     </Container>;
 
 export default Dir;

@@ -4,7 +4,7 @@ import Dir from './dir';
 
 const Container = styled.div`
     color: #fff;
-    padding: 16px;
+    padding: 16px 0;
 `;
 
 const Explorer = ({ root }) =>

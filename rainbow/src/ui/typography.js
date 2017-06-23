@@ -14,5 +14,5 @@ injectGlobal`
 
 export default styled.div`
     font-family: sans-serif;
-    font-size: 18px;
+    font-size: 16px;
 `;
