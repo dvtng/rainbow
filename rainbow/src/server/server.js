@@ -1,0 +1,37 @@
+const express = require('express');
+const path = require('path');
+const { getStoryFiles, compileStory } = require('../compiler');
+const storyTemplate = require('./story-template');
+
+const cwd = process.cwd();
+
+module.exports = ({ port }) => {
+    const app = express();
+
+    app.use(express.static(path.join(__dirname, 'static')));
+    app.use(express.static(path.join(__dirname, '../../build')));
+
+    // Get list of all story files
+    app.get('/story-list', (req, res) => {
+        getStoryFiles().then(storyFiles => res.send(storyFiles));
+    });
+
+    // Get compiled file contents
+    app.get(/\/story-file\/(.*)/, (req, res) => {
+        const storyFile = req.params[0];
+        compileStory(path.join(cwd, storyFile)).then(
+            output => res.send(output),
+            error => res.send(error)
+        );
+    });
+
+    // Renders the default scene in a story
+    app.get(/\/story\/(.*)/, (req, res) => {
+        const storyFile = req.params[0];
+        res.send(storyTemplate({ storyFile: storyFile }));
+    });
+
+    app.listen(port);
+
+    console.log(`Rainbow started at http://localhost:${port}`);
+};

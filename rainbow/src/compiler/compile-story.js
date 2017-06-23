@@ -1,30 +1,22 @@
 const webpack = require('webpack');
 const MemoryFS = require('memory-fs');
 const path = require('path');
-const Module = require('module');
+const addedWebpackConfig = require('./story-added.webpack.config');
 
 const getBaseWebpackConfig = () => {
     // TODO: detect project's webpack config
-    return require('./webpack.config.js');
+    return require('./story-default.webpack.config.js');
 };
 
 const getWebpackConfigFor = filename => {
-    return Object.assign({}, getBaseWebpackConfig(), {
-        entry: [filename],
-        output: {
-            path: '/',
-            filename: 'bundle.js',
-            libraryTarget: 'commonjs2'
-        }
-    });
+    return Object.assign(
+        {},
+        getBaseWebpackConfig(),
+        addedWebpackConfig(filename)
+    );
 };
 
-const requireModuleFromString = (fileContents, filename) => {
-    const m = new Module();
-    m._compile(fileContents, filename);
-    return m.exports;
-};
-
+// Compiles story in memory and returns compiled contents
 module.exports = filename => {
     return new Promise((resolve, reject) => {
         const fs = new MemoryFS();
@@ -34,8 +26,8 @@ module.exports = filename => {
             if (err) {
                 reject(err);
             } else {
-                const fileContents = fs.readFileSync('/bundle.js', 'utf8');
-                resolve(requireModuleFromString(fileContents, filename));
+                const storyContents = fs.readFileSync('/story.js', 'utf8');
+                resolve(storyContents);
             }
         });
     });

@@ -6,7 +6,8 @@
     "rainbow": "src/index.js"
   },
   "scripts": {
-    "start": "webpack-dev-server --content-base src/ui/static",
+    "start": "node src/start-rainbow",
+    "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "David Tang",
@@ -28,7 +29,6 @@
     "react-dom": "^15.6.1",
     "styled-components": "^2.1.0",
     "webpack": "^3.0.0",
-    "webpack-dev-middleware": "^1.11.0",
     "webpack-dev-server": "^2.5.0"
   },
   "devDependencies": {

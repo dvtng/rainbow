@@ -1,7 +1,5 @@
 /**
  * This is the default webpack config for building stories.
- * The webpack config used for building rainbow is at:
- * PROJECT_ROOT/webpack.config.js.
  */
 
 const path = require('path');
