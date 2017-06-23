@@ -8,9 +8,10 @@
   "scripts": {
     "start": "node src/start-rainbow",
     "build": "webpack",
-    "test": "mocha --require babel-register 'src/**/*test.js'",
     "lint": "eslint src",
-    "lint:fix": "eslint src --fix"
+    "lint:fix": "eslint src --fix",
+    "test": "mocha --require babel-register 'src/**/*test.js'",
+    "test:watch": "mocha -w --require babel-register 'src/**/*test.js'"
   },
   "author": "David Tang",
   "license": "MIT",
