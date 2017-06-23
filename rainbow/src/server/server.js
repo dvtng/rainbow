@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const { getStoryFiles, compileStory } = require('../compiler');
 const storyTemplate = require('./story-template');
+const tree = require('./tree.js');
 
 const cwd = process.cwd();
 
@@ -13,7 +14,7 @@ module.exports = ({ port }) => {
 
     // Get list of all story files
     app.get('/story-list', (req, res) => {
-        getStoryFiles().then(storyFiles => res.send(storyFiles));
+        getStoryFiles().then(storyFiles => res.send(tree(storyFiles)));
     });
 
     // Get compiled file contents

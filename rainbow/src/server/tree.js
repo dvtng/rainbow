@@ -1,4 +1,4 @@
-import _ from 'lodash';
+const _ = require('lodash');
 
 const tree = files => {
     const createTree = (node, path) => {
@@ -33,4 +33,4 @@ const tree = files => {
     return root;
 };
 
-export default tree;
+module.exports = tree;

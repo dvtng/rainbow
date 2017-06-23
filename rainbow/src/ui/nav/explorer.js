@@ -9,7 +9,7 @@ const Container = styled.div`
 
 const Explorer = ({ root }) =>
     <Container>
-        <Dir name={root.name}>{root.children}</Dir>
+        {root ? <Dir name={root.name}>{root.children}</Dir> : null}
     </Container>;
 
 export default Explorer;

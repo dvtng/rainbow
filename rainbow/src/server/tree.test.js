@@ -1,6 +1,6 @@
-import { describe, it } from 'mocha';
-import { expect } from 'chai';
-import tree from './tree.js';
+const { describe, it } = require('mocha');
+const { expect } = require('chai');
+const tree = require('./tree');
 
 describe('tree test', () => {
     it('should turn single path into tree', () => {
