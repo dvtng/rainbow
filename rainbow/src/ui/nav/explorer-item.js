@@ -15,8 +15,8 @@ const Circle = styled.div`
     vertical-align: bottom;
 `;
 
-export default ({ children }) =>
+export default ({ path, children }) =>
     <Container>
         <Circle />
-        {children}
+        <span title={path}>{children}</span>
     </Container>;
