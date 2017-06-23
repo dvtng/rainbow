@@ -25,7 +25,7 @@ module.exports = ({ port }) => {
         );
     });
 
-    // Renders the default scene in a story
+    // Renders the default story in a file
     app.get(/\/story\/(.*)/, (req, res) => {
         const storyFile = req.params[0];
         res.send(storyTemplate({ storyFile: storyFile }));
