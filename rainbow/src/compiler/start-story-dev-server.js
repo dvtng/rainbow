@@ -24,7 +24,11 @@ module.exports = ({ filename, port }) => {
     }
 
     const compiler = webpack(getWebpackConfigFor({ filename, port }));
-    server = new WebpackDevServer(compiler, {});
+    server = new WebpackDevServer(compiler, {
+        stats: {
+            colors: true
+        }
+    });
     server.listen(port);
     return server;
 };
