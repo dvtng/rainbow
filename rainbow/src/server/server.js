@@ -1,6 +1,10 @@
 const express = require('express');
 const path = require('path');
-const { getStoryFiles, compileStory } = require('../compiler');
+const {
+    getStoryFiles,
+    compileStory,
+    startStoryDevServer
+} = require('../compiler');
 const storyTemplate = require('./story-template');
 
 const cwd = process.cwd();
@@ -28,7 +32,12 @@ module.exports = ({ port }) => {
     // Renders the default story in a file
     app.get(/\/story\/(.*)/, (req, res) => {
         const storyFile = req.params[0];
-        res.send(storyTemplate({ storyFile: storyFile }));
+        const storyPort = port + 1;
+        startStoryDevServer({
+            filename: path.join(cwd, storyFile),
+            port: storyPort
+        });
+        res.send(storyTemplate({ storyPort }));
     });
 
     app.listen(port);
