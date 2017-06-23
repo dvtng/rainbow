@@ -1,10 +1,22 @@
 const WebpackDevServer = require('webpack-dev-server');
 const webpack = require('webpack');
 const path = require('path');
+const fs = require('fs');
 const addedWebpackConfig = require('./story-added.webpack.config');
 
 const getBaseWebpackConfig = () => {
-    // TODO: detect project's webpack config
+    // Detect project's webpack config
+    const projectWebpackConfigPath = path.join(
+        process.cwd(),
+        'webpack.config.js'
+    );
+    if (fs.existsSync(projectWebpackConfigPath)) {
+        console.log('Detected webpack config at project root');
+        return require(projectWebpackConfigPath);
+    }
+
+    // None found, use default config
+    console.log('No webpack config at project root, using default config');
     return require('./story-default.webpack.config.js');
 };
 
