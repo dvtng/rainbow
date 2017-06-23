@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "React component explorer, inspired by Storybook",
   "bin": {
-    "rainbow": "src/index.js"
+    "rainbow": "src/start-rainbow.js"
   },
   "scripts": {
     "start": "node src/start-rainbow",

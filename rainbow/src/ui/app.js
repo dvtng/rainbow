@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Typography from './typography';
 import Container from './nav';
-import Scene from './scene';
+import StoryViewer from './story-viewer';
 
 const Frame = Typography.extend`
     display: flex;
@@ -13,7 +13,7 @@ const Frame = Typography.extend`
 const App = () =>
     <Frame>
         <Container />
-        <Scene />
+        <StoryViewer />
     </Frame>;
 
 export default App;
