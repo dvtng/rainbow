@@ -17,15 +17,19 @@ const Li = styled.li`
 
 const isDir = file => file.children && file.children.length;
 
-const Dir = ({ name, children }) =>
+const Dir = ({ name, path, children }) =>
     <Container>
         <ExplorerItem>{name}</ExplorerItem>
         <Ul>
             {children.map(child =>
                 <Li key={child.name}>
                     {isDir(child)
-                        ? <Dir name={child.name}>{child.children}</Dir>
-                        : <ExplorerItem>{child.name}</ExplorerItem>}
+                        ? <Dir name={child.name} path={path + child.name + '/'}>
+                              {child.children}
+                          </Dir>
+                        : <ExplorerItem path={path + child.name}>
+                              {child.name}
+                          </ExplorerItem>}
                 </Li>
             )}
         </Ul>

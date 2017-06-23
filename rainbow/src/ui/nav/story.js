@@ -9,7 +9,8 @@ export default (
                 name: 'components',
                 children: [
                     {
-                        name: 'foo'
+                        name: 'dir',
+                        children: [{ name: 'foo' }]
                     },
                     {
                         name: 'bar'
