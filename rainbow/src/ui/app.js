@@ -13,7 +13,7 @@ const Frame = Typography.extend`
 const App = () =>
     <Frame>
         <Container />
-        <StoryViewer />
+        <StoryViewer src="/story/src/ui/nav/story.js" />
     </Frame>;
 
 export default App;
