@@ -6,9 +6,10 @@ import styled from 'styled-components';
 const Container = styled.div`
     background-color: #202020;
     box-sizing: border-box;
+    flex-shrink: 0;
     min-height: 400px;
     padding: 32px;
-    width: 338px;
+    width: 332px;
 `;
 
 const H1 = styled.h1`
