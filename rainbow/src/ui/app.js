@@ -1,8 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Provider } from 'mobx-react';
 import Typography from './typography';
 import Container from './nav';
 import StoryViewer from './story-viewer';
+import NavModel from './nav-model';
 
 const Frame = Typography.extend`
     display: flex;
@@ -10,10 +12,14 @@ const Frame = Typography.extend`
     height: 100%;
 `;
 
+const nav = new NavModel();
+
 const App = () =>
-    <Frame>
-        <Container />
-        <StoryViewer src="/story/src/ui/nav/story.js" />
-    </Frame>;
+    <Provider nav={nav}>
+        <Frame>
+            <Container />
+            <StoryViewer />
+        </Frame>
+    </Provider>;
 
 export default App;

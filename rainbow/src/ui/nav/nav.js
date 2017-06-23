@@ -1,6 +1,6 @@
 import React from 'react';
-import Dir from './dir.js';
-import Explorer from './explorer.js';
+import Dir from './dir';
+import Explorer from './explorer';
 import styled from 'styled-components';
 
 const Container = styled.div`

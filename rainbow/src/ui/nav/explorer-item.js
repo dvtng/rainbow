@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { inject } from 'mobx-react';
 
 const Container = styled.div`
     padding: 6px 0;
@@ -15,8 +16,12 @@ const Circle = styled.div`
     vertical-align: bottom;
 `;
 
-export default ({ path, children }) =>
+const ExplorerItem = ({ storyFile, children, nav }) =>
     <Container>
         <Circle />
-        <span title={path}>{children}</span>
+        <a title={storyFile} onClick={() => nav.selectStoryFile(storyFile)}>
+            {children}
+        </a>
     </Container>;
+
+export default inject('nav')(ExplorerItem);

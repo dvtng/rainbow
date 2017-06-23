@@ -27,7 +27,7 @@ const Dir = ({ name, path, children }) =>
                         ? <Dir name={child.name} path={path + child.name + '/'}>
                               {child.children}
                           </Dir>
-                        : <ExplorerItem path={path + child.name}>
+                        : <ExplorerItem storyFile={path + child.name}>
                               {child.name}
                           </ExplorerItem>}
                 </Li>
