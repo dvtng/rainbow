@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Dir from './dir.js';
+import Dir from './dir';
 
 const Container = styled.div`
     color: #fff;

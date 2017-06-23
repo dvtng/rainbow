@@ -5,6 +5,10 @@ const Container = styled.div`
     color: #fff;
 `;
 
+const Li = styled.li`
+    list-style: none;
+`;
+
 const isDir = file => file.children && file.children.length;
 
 const Dir = ({ name, children }) =>
@@ -12,11 +16,11 @@ const Dir = ({ name, children }) =>
         {name}
         <ul>
             {children.map(child =>
-                <li key={child.name}>
+                <Li key={child.name}>
                     {isDir(child)
                         ? <Dir name={child.name}>{child.children}</Dir>
                         : child.name}
-                </li>
+                </Li>
             )}
         </ul>
     </Container>;
