@@ -35,11 +35,11 @@ module.exports = ({ filename, port }) => {
         server.close();
     }
 
+    console.log(`Starting webpack dev server for ${filename} on port ${port}`);
+
     const compiler = webpack(getWebpackConfigFor({ filename, port }));
     server = new WebpackDevServer(compiler, {
-        stats: {
-            colors: true
-        }
+        quiet: true
     });
     server.listen(port);
     return server;

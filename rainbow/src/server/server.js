@@ -21,23 +21,16 @@ module.exports = ({ port }) => {
         getStoryFiles().then(storyFiles => res.send(tree(storyFiles)));
     });
 
-    // Get compiled file contents
-    app.get(/\/story-file\/(.*)/, (req, res) => {
-        const storyFile = req.params[0];
-        compileStory(path.join(cwd, storyFile)).then(
-            output => res.send(output),
-            error => res.send(error)
-        );
-    });
-
-    // Renders the default story in a file
+    // Renders a story file
     app.get(/\/story\/(.*)/, (req, res) => {
         const storyFile = req.params[0];
         const storyPort = port + 1;
+
         startStoryDevServer({
             filename: path.join(cwd, storyFile),
             port: storyPort
         });
+
         res.send(storyTemplate({ storyPort }));
     });
 
