@@ -137,4 +137,52 @@ describe('collapsed tree test', () => {
 
         expect(collapsedTree(paths)).to.deep.equal(expectedCollapsedTree);
     });
+
+    it('should collapse deeply nested leaf', () => {
+        const paths = ['dir1/dir2/dir3/dir4/foo.js'];
+
+        const expectedCollapsedTree = {
+            name: 'root',
+            children: [
+                {
+                    name: 'dir1/dir2/dir3/dir4',
+                    children: [
+                        {
+                            name: 'foo.js'
+                        }
+                    ]
+                }
+            ]
+        };
+
+        expect(collapsedTree(paths)).to.deep.equal(expectedCollapsedTree);
+    });
+
+    it('should not collapse if no single child branches', () => {
+        const paths = ['dir1/dir2/foo.js', 'dir1/bar.js'];
+
+        const expectedCollapsedTree = {
+            name: 'root',
+            children: [
+                {
+                    name: 'dir1',
+                    children: [
+                        {
+                            name: 'dir2',
+                            children: [
+                                {
+                                    name: 'foo.js'
+                                }
+                            ]
+                        },
+                        {
+                            name: 'bar.js'
+                        }
+                    ]
+                }
+            ]
+        };
+
+        expect(collapsedTree(paths)).to.deep.equal(expectedCollapsedTree);
+    });
 });

@@ -9,13 +9,17 @@ const collapsePaths = node => {
     }
 
     if (hasSingleChild(node) && !isLeaf(node.children[0])) {
-        node.name += '/' + node.children[0].name;
-        node.children = node.children[0].children;
+        const onlyChild = node.children[0];
+        return collapsePaths({
+            name: node.name + '/' + onlyChild.name,
+            children: onlyChild.children
+        });
     }
 
-    node.children = _.map(node.children, child => collapsePaths(child));
-
-    return node;
+    return {
+        name: node.name,
+        children: _.map(node.children, child => collapsePaths(child))
+    };
 };
 
 const tree = files => {
