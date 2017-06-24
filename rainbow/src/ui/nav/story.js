@@ -9,7 +9,7 @@ const nav = new NavModel({
         name: 'components',
         children: [
             {
-                name: 'dir',
+                name: 'dir1/dir2',
                 children: [{ name: 'foo.story.js' }]
             },
             {
