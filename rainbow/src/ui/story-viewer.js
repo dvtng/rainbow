@@ -3,6 +3,7 @@ import { inject, observer } from 'mobx-react';
 
 class StoryViewer extends Component {
     setNewIframe = iframe => {
+        if (!iframe) return;
         iframe.addEventListener('load', e => {
             const stories = Object.keys(iframe.contentWindow.stories);
             this.props.nav.setStories(stories);
