@@ -23,6 +23,10 @@ const Link = styled.a`
     }
 `;
 
+const Text = styled.span`
+    color: #999;
+`;
+
 const ExplorerItem = ({ storyFile, children, nav }) =>
     <Container>
         <Circle />
@@ -33,7 +37,7 @@ const ExplorerItem = ({ storyFile, children, nav }) =>
               >
                   {children}
               </Link>
-            : <span>{children}</span>}
+            : <Text>{children}</Text>}
     </Container>;
 
 export default inject('nav')(ExplorerItem);
