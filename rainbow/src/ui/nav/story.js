@@ -15,10 +15,10 @@ export default (
                     children: [
                         {
                             name: 'dir',
-                            children: [{ name: 'foo' }]
+                            children: [{ name: 'foo.story.js' }]
                         },
                         {
-                            name: 'bar'
+                            name: 'bar.story.js'
                         }
                     ]
                 }}

@@ -7,7 +7,7 @@ const Container = styled.div`
 `;
 
 const Circle = styled.div`
-    border: 1px solid #fff;
+    border: 1px solid #999;
     border-radius: 50%;
     display: inline-block;
     height: 17px;
@@ -16,12 +16,24 @@ const Circle = styled.div`
     vertical-align: bottom;
 `;
 
+const Link = styled.a`
+    &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+    }
+`;
+
 const ExplorerItem = ({ storyFile, children, nav }) =>
     <Container>
         <Circle />
-        <a title={storyFile} onClick={() => nav.selectStoryFile(storyFile)}>
-            {children}
-        </a>
+        {storyFile
+            ? <Link
+                  title={storyFile}
+                  onClick={() => nav.selectStoryFile(storyFile)}
+              >
+                  {children}
+              </Link>
+            : <span>{children}</span>}
     </Container>;
 
 export default inject('nav')(ExplorerItem);
