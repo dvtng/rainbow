@@ -1,4 +1,4 @@
-import { observable, action } from 'mobx';
+import { observable, action, computed } from 'mobx';
 
 export default class NavModel {
     constructor(state) {
@@ -12,6 +12,18 @@ export default class NavModel {
     @observable stories = null;
 
     @observable selectedStory = null;
+
+    @computed
+    get sortedStories() {
+        if (this.stories == null) return this.stories;
+
+        const withoutDefault = this.stories
+            .filter(story => story !== 'default')
+            .sort();
+        return withoutDefault.length === this.stories.length
+            ? withoutDefault
+            : ['default'].concat(withoutDefault);
+    }
 
     @action
     loadFileTree = () => {
