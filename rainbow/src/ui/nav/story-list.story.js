@@ -3,7 +3,7 @@ import { StoryList } from './story-list';
 
 export default (
     <StoryList
-        stories={['story1', 'story2', 'default']}
+        stories={['default', 'story1', 'story2']}
         selectedStory="story2"
         onSelect={() => {}}
     />

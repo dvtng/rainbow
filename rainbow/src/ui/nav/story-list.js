@@ -30,7 +30,7 @@ export const StoryList = ({ stories, selectedStory, onSelect }) =>
         : null;
 
 export default inject(stores => ({
-    stories: stores.nav.stories,
+    stories: stores.nav.sortedStories,
     selectedStory: stores.nav.selectedStory,
     onSelect: stores.nav.selectStory
 }))(observer(StoryList));
