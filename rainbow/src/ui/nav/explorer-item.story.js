@@ -6,3 +6,13 @@ export default (
         TodoItem.story.js
     </ExplorerItem>
 );
+
+export const selected = (
+    <ExplorerItem
+        storyFile="src/TodoItem.story.js"
+        onSelect={() => {}}
+        isSelected
+    >
+        TodoItem.story.js
+    </ExplorerItem>
+);

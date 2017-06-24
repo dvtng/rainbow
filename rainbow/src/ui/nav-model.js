@@ -11,6 +11,8 @@ export default class NavModel {
 
     @observable stories = null;
 
+    @observable selectedStory = null;
+
     @action
     loadFileTree = () => {
         fetch('/story-list').then(resp => resp.json()).then(
@@ -23,10 +25,16 @@ export default class NavModel {
     @action
     selectStoryFile = storyFile => {
         this.selectedStoryFile = storyFile;
+        this.selectedStory = 'default';
     };
 
     @action
     setStories = stories => {
         this.stories = stories;
+    };
+
+    @action
+    selectStory = story => {
+        this.selectedStory = story;
     };
 }

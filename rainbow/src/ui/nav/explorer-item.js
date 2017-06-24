@@ -6,8 +6,18 @@ const Container = styled.div`
     padding: 6px 0;
 `;
 
+const OuterCircle = styled.div`
+    border: 3px solid #275FA6;
+    border-radius: 50%;
+    height: 19px;
+    width: 19px;
+    margin-left: -4px;
+    margin-top: -4px;
+`;
+
 const Circle = styled.div`
-    border: 1px solid #999;
+    border: 1px solid;
+    border-color: ${props => (props.isSelected ? '#fff' : '#999')};
     border-radius: 50%;
     display: inline-block;
     height: 17px;
@@ -27,9 +37,11 @@ const Text = styled.span`
     color: #999;
 `;
 
-export const ExplorerItem = ({ storyFile, children, onSelect }) =>
+export const ExplorerItem = ({ storyFile, isSelected, children, onSelect }) =>
     <Container>
-        <Circle />
+        <Circle isSelected={isSelected}>
+            {isSelected && <OuterCircle />}
+        </Circle>
         {storyFile
             ? <Link title={storyFile} onClick={() => onSelect(storyFile)}>
                   {children}
@@ -37,6 +49,8 @@ export const ExplorerItem = ({ storyFile, children, onSelect }) =>
             : <Text>{children}</Text>}
     </Container>;
 
-export default inject(stores => ({
-    onSelect: stores.nav.selectStoryFile
+export default inject((stores, props) => ({
+    onSelect: stores.nav.selectStoryFile,
+    isSelected:
+        props.storyFile && stores.nav.selectedStoryFile === props.storyFile
 }))(ExplorerItem);

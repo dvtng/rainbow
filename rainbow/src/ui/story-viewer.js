@@ -17,7 +17,7 @@ class StoryViewer extends Component {
                   key={nav.selectedStoryFile}
                   ref={this.setNewIframe}
                   style={{ border: 'none', width: '100%' }}
-                  src={`/story/${nav.selectedStoryFile}`}
+                  src={`/story/${nav.selectedStoryFile}#${nav.selectedStory}`}
               />
             : null;
     }
