@@ -5,7 +5,7 @@ module.exports = ({ filename, port }) => ({
         publicPath: '/',
         filename: 'story.js',
         libraryTarget: 'var',
-        library: 'story'
+        library: 'stories'
     },
     externals: {
         react: 'React',

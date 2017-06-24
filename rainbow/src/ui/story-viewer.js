@@ -1,15 +1,25 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
 
-const Iframe = styled.iframe`
-    border: none;
-    width: 100%;
-`;
+class StoryViewer extends Component {
+    setNewIframe = iframe => {
+        iframe.addEventListener('load', e => {
+            const stories = Object.keys(iframe.contentWindow.stories);
+            this.props.nav.setStories(stories);
+        });
+    };
 
-const StoryViewer = ({ nav }) =>
-    nav.selectedStoryFile
-        ? <Iframe src={`/story/${nav.selectedStoryFile}`} />
-        : null;
+    render() {
+        const { nav } = this.props;
+        return nav.selectedStoryFile
+            ? <iframe
+                  key={nav.selectedStoryFile}
+                  ref={this.setNewIframe}
+                  style={{ border: 'none', width: '100%' }}
+                  src={`/story/${nav.selectedStoryFile}`}
+              />
+            : null;
+    }
+}
 
 export default inject('nav')(observer(StoryViewer));

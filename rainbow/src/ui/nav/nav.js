@@ -1,11 +1,13 @@
 import React from 'react';
+import styled from 'styled-components';
 import Dir from './dir';
 import Explorer from './explorer';
-import styled from 'styled-components';
+import StoryList from './story-list';
 
 const Container = styled.div`
     background-color: #202020;
     box-sizing: border-box;
+    color: #fff;
     flex-shrink: 0;
     min-height: 400px;
     padding: 32px;
@@ -24,6 +26,7 @@ const Nav = ({ root }) =>
     <Container>
         <H1>Rainbow</H1>
         <Explorer root={root} />
+        <StoryList />
     </Container>;
 
 export default Nav;

@@ -1,6 +1,6 @@
 var React = window.React;
 var ReactDOM = window.ReactDOM;
-var story = window.story;
+var stories = window.stories;
 
 var rootEl = document.getElementById('root');
 
@@ -12,7 +12,7 @@ function renderStory() {
     var storyName = window.location.hash.length > 1
         ? window.location.hash.substr(1)
         : 'default';
-    var Component = story[storyName];
+    var Component = stories[storyName];
 
     if (Component == null) {
         error('Story "' + storyName + '" was not found. Did you export it?');

@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import Dir from './dir';
 
 const Container = styled.div`
-    color: #fff;
     padding: 16px 0;
 `;
 
