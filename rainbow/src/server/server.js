@@ -6,7 +6,7 @@ const {
     startStoryDevServer
 } = require('../compiler');
 const storyTemplate = require('./story-template');
-const tree = require('./tree.js');
+const { collapsedTree } = require('./tree.js');
 
 const cwd = process.cwd();
 
@@ -18,7 +18,7 @@ module.exports = ({ port }) => {
 
     // Get list of all story files
     app.get('/story-list', (req, res) => {
-        getStoryFiles().then(storyFiles => res.send(tree(storyFiles)));
+        getStoryFiles().then(storyFiles => res.send(collapsedTree(storyFiles)));
     });
 
     // Renders a story file

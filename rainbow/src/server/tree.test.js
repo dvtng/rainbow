@@ -1,10 +1,10 @@
 const { describe, it } = require('mocha');
 const { expect } = require('chai');
-const tree = require('./tree');
+const { tree, collapsedTree } = require('./tree');
 
 describe('tree test', () => {
     it('should turn single path into tree', () => {
-        const paths = ['/dir1/dir2/foo.js'];
+        const paths = ['dir1/dir2/foo.js'];
 
         const expectedTree = {
             name: 'root',
@@ -28,7 +28,7 @@ describe('tree test', () => {
     });
 
     it('should turn multiple paths into tree', () => {
-        const paths = ['/dir1/dir2/foo.js', '/dir1/bar.js', 'cat.js'];
+        const paths = ['dir1/dir2/foo.js', 'dir1/bar.js', 'cat.js'];
 
         const expectedTree = {
             name: 'root',
@@ -58,7 +58,7 @@ describe('tree test', () => {
     });
 
     it('should turn paths with depth of 3 into tree', () => {
-        const paths = ['/dir1/dir2/dir3/foo.js', '/dir1/dir2/bar.js'];
+        const paths = ['dir1/dir2/dir3/foo.js', 'dir1/dir2/bar.js'];
 
         const expectedTree = {
             name: 'root',
@@ -88,5 +88,53 @@ describe('tree test', () => {
         };
 
         expect(tree(paths)).to.deep.equal(expectedTree);
+    });
+});
+
+describe('collapsed tree test', () => {
+    it('should collapse branches with only 1 child', () => {
+        const paths = ['dir1/dir2/foo.js', 'bar.js'];
+
+        const expectedCollapsedTree = {
+            name: 'root',
+            children: [
+                {
+                    name: 'dir1/dir2',
+                    children: [
+                        {
+                            name: 'foo.js'
+                        }
+                    ]
+                },
+                {
+                    name: 'bar.js'
+                }
+            ]
+        };
+
+        expect(collapsedTree(paths)).to.deep.equal(expectedCollapsedTree);
+    });
+
+    it('should collapse branches with nested childs', () => {
+        const paths = ['dir1/dir2/foo.js', 'dir1/dir2/bar.js'];
+
+        const expectedCollapsedTree = {
+            name: 'root',
+            children: [
+                {
+                    name: 'dir1/dir2',
+                    children: [
+                        {
+                            name: 'foo.js'
+                        },
+                        {
+                            name: 'bar.js'
+                        }
+                    ]
+                }
+            ]
+        };
+
+        expect(collapsedTree(paths)).to.deep.equal(expectedCollapsedTree);
     });
 });
