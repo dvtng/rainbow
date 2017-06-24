@@ -27,17 +27,16 @@ const Text = styled.span`
     color: #999;
 `;
 
-const ExplorerItem = ({ storyFile, children, nav }) =>
+export const ExplorerItem = ({ storyFile, children, onSelect }) =>
     <Container>
         <Circle />
         {storyFile
-            ? <Link
-                  title={storyFile}
-                  onClick={() => nav.selectStoryFile(storyFile)}
-              >
+            ? <Link title={storyFile} onClick={() => onSelect(storyFile)}>
                   {children}
               </Link>
             : <Text>{children}</Text>}
     </Container>;
 
-export default inject('nav')(ExplorerItem);
+export default inject(stores => ({
+    onSelect: stores.nav.selectStoryFile
+}))(ExplorerItem);
