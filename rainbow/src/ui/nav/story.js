@@ -4,27 +4,25 @@ import Typography from '../typography';
 import Nav from './nav';
 import NavModel from '../nav-model';
 
-const nav = new NavModel();
+const nav = new NavModel({
+    fileTree: {
+        name: 'components',
+        children: [
+            {
+                name: 'dir',
+                children: [{ name: 'foo.story.js' }]
+            },
+            {
+                name: 'bar.story.js'
+            }
+        ]
+    }
+});
 
 export default (
     <Provider nav={nav}>
         <Typography>
-            <Nav
-                root={{
-                    name: 'components',
-                    children: [
-                        {
-                            name: 'dir',
-                            children: [{ name: 'foo.story.js' }]
-                        },
-                        {
-                            name: 'bar.story.js'
-                        }
-                    ]
-                }}
-            />
+            <Nav />
         </Typography>
     </Provider>
 );
-
-export const withHeading = <Nav>Rainbow</Nav>;

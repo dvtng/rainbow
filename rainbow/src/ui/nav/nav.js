@@ -22,10 +22,10 @@ const H1 = styled.h1`
     margin: 0;
 `;
 
-const Nav = ({ root }) =>
+const Nav = () =>
     <Container>
         <H1>Rainbow</H1>
-        <Explorer root={root} />
+        <Explorer />
         <StoryList />
     </Container>;
 

@@ -1,1 +1,1 @@
-module.exports = require('./nav-container');
+module.exports = require('./nav');

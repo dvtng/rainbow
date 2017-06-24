@@ -13,6 +13,7 @@ const Frame = Typography.extend`
 `;
 
 const nav = new NavModel();
+nav.loadFileTree();
 
 const App = () =>
     <Provider nav={nav}>
