@@ -7,7 +7,7 @@ export default (
     </ExplorerItem>
 );
 
-export const selected = (
+export const selectedItem = (
     <ExplorerItem
         storyFile="src/TodoItem.story.js"
         onSelect={() => {}}
