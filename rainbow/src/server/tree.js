@@ -1,14 +1,15 @@
 const _ = require('lodash');
 
 const isLeaf = node => !node.children || !node.children.length;
-const hasSingleChild = node => node.children && node.children.length === 1;
+const hasOnlyChild = node => node.children && node.children.length === 1;
 
 const collapsePaths = node => {
     if (isLeaf(node)) {
         return node;
     }
 
-    if (hasSingleChild(node) && !isLeaf(node.children[0])) {
+    // has only child and only child is not a leaf
+    if (hasOnlyChild(node) && !isLeaf(node.children[0])) {
         const onlyChild = node.children[0];
         return collapsePaths({
             name: node.name + '/' + onlyChild.name,
@@ -16,6 +17,7 @@ const collapsePaths = node => {
         });
     }
 
+    // has multiple children
     return {
         name: node.name,
         children: _.map(node.children, child => collapsePaths(child))
@@ -61,7 +63,5 @@ const collapsedTree = files => {
     return root;
 };
 
-module.exports = {
-    tree: tree,
-    collapsedTree: collapsedTree
-};
+module.exports.tree = tree;
+module.exports.collapsedTree = collapsedTree;

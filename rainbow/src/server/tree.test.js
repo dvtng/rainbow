@@ -92,7 +92,7 @@ describe('tree test', () => {
 });
 
 describe('collapsed tree test', () => {
-    it('should collapse branches with only 1 child', () => {
+    it('should collapse branches with only child', () => {
         const paths = ['dir1/dir2/foo.js', 'bar.js'];
 
         const expectedCollapsedTree = {
@@ -158,7 +158,7 @@ describe('collapsed tree test', () => {
         expect(collapsedTree(paths)).to.deep.equal(expectedCollapsedTree);
     });
 
-    it('should not collapse if no single child branches', () => {
+    it('should not collapse if no only child branches', () => {
         const paths = ['dir1/dir2/foo.js', 'dir1/bar.js'];
 
         const expectedCollapsedTree = {
