@@ -2,11 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import Explorer from './file-nav/explorer';
 import StoryNav from './story-nav/story-nav';
+import NavStyle from './nav-style';
 
-const Container = styled.div`
-    background-color: #202020;
+const Container = NavStyle.extend`
     box-sizing: border-box;
-    color: #fff;
     flex-shrink: 0;
     min-height: 400px;
     padding: 32px;
