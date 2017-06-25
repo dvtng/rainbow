@@ -50,6 +50,6 @@ export const ExplorerItem = ({ storyFile, isSelected, children, onSelect }) =>
     </Container>;
 
 export default inject((stores, props) => ({
-    onSelect: stores.nav.selectStoryFile,
+    onSelect: stores.nav.selectFile,
     isSelected: props.storyFile && stores.nav.selectedFile === props.storyFile
 }))(ExplorerItem);
