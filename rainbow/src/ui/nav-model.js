@@ -1,5 +1,12 @@
 import { observable, action, computed } from 'mobx';
 
+const sortStories = stories => {
+    const withoutDefault = stories.filter(story => story !== 'default').sort();
+    return withoutDefault.length === stories.length
+        ? withoutDefault
+        : ['default'].concat(withoutDefault);
+};
+
 export default class NavModel {
     constructor(state) {
         Object.assign(this, state);
@@ -12,18 +19,6 @@ export default class NavModel {
     @observable stories = null;
 
     @observable selectedStory = null;
-
-    @computed
-    get sortedStories() {
-        if (this.stories == null) return this.stories;
-
-        const withoutDefault = this.stories
-            .filter(story => story !== 'default')
-            .sort();
-        return withoutDefault.length === this.stories.length
-            ? withoutDefault
-            : ['default'].concat(withoutDefault);
-    }
 
     @action
     loadFileTree = () => {
@@ -42,8 +37,8 @@ export default class NavModel {
 
     @action
     setStories = stories => {
-        this.stories = stories;
-        this.selectedStory = stories[0];
+        this.stories = sortStories(stories);
+        this.selectedStory = this.stories[0];
     };
 
     @action
