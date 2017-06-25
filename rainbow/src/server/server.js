@@ -23,10 +23,12 @@ module.exports = ({ port }) => {
         );
     });
 
+    let renderStoryCounter = 0;
     // Renders a story file
     app.get(/\/story\/(.*)/, (req, res) => {
         const storyFile = req.params[0];
-        const storyPort = port + 1;
+        const storyPort = port + 1 + renderStoryCounter % 5;
+        renderStoryCounter++;
 
         startStoryDevServer({
             filename: path.join(cwd, storyFile),
