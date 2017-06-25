@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import Dir from './dir';
-import Explorer from './explorer';
-import StoryList from './story-list';
+import Explorer from './file-nav/explorer';
+import StoryNav from './story-nav/story-nav';
 
 const Container = styled.div`
     background-color: #202020;
@@ -26,7 +25,7 @@ const Nav = () =>
     <Container>
         <H1>Rainbow</H1>
         <Explorer />
-        <StoryList />
+        <StoryNav />
     </Container>;
 
 export default Nav;

@@ -1,8 +1,11 @@
 import React from 'react';
+import { inject, observer } from 'mobx-react';
 
-const FileInfo = ({ storyFile }) =>
+export const FileInfo = ({ file }) =>
     <div>
-        <span>{storyFile}</span>
+        <span>{file}</span>
     </div>;
 
-export default FileInfo;
+export default inject(stores => ({
+    file: stores.nav.selectedFile
+}))(observer(FileInfo));

@@ -1,4 +1,4 @@
 import React from 'react';
-import FileInfo from './file-info';
+import { FileInfo } from './file-info';
 
-export default <FileInfo storyFile="src/components/todo/TodoItem.story.js" />;
+export default <FileInfo file="src/components/todo/TodoItem.story.js" />;
