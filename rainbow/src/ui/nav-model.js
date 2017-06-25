@@ -37,12 +37,13 @@ export default class NavModel {
     @action
     selectStoryFile = storyFile => {
         this.selectedFile = storyFile;
-        this.selectedStory = 'default';
+        this.stories = null;
     };
 
     @action
     setStories = stories => {
         this.stories = stories;
+        this.selectedStory = stories[0];
     };
 
     @action
