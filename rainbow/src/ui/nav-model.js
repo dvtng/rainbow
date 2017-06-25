@@ -7,7 +7,7 @@ export default class NavModel {
 
     @observable fileTree = null;
 
-    @observable selectedStoryFile = null;
+    @observable selectedFile = null;
 
     @observable stories = null;
 
@@ -36,7 +36,7 @@ export default class NavModel {
 
     @action
     selectStoryFile = storyFile => {
-        this.selectedStoryFile = storyFile;
+        this.selectedFile = storyFile;
         this.selectedStory = 'default';
     };
 
