@@ -46,9 +46,9 @@ const createTree = (node, path) => {
     createTree(child, path);
 };
 
-const tree = files => {
+const tree = (files, rootName) => {
     const root = {
-        name: 'root'
+        name: rootName
     };
 
     _.each(files, file => {
@@ -59,8 +59,8 @@ const tree = files => {
     return root;
 };
 
-const collapsedTree = files => {
-    let root = tree(files);
+const collapsedTree = (files, rootName) => {
+    let root = tree(files, rootName);
     root.children = _.map(root.children, child => collapsePaths(child));
     return root;
 };
