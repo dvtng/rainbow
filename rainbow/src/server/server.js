@@ -2,7 +2,6 @@ const express = require('express');
 const path = require('path');
 const { getStoryFiles, storyDevServer } = require('../compiler');
 const storyTemplate = require('./story-template');
-const { collapsedTree } = require('./tree');
 
 const cwd = process.cwd();
 
@@ -13,11 +12,11 @@ module.exports = ({ port }) => {
     app.use(express.static(path.join(__dirname, 'static')));
     app.use(express.static(path.join(__dirname, '../../build')));
 
+    app.get('/name', (req, res) => res.send(path.basename(cwd)));
+
     // Get list of all story files
     app.get('/story-list', (req, res) => {
-        getStoryFiles().then(storyFiles =>
-            res.send(collapsedTree(storyFiles, path.basename(cwd)))
-        );
+        getStoryFiles().then(storyFiles => res.send(storyFiles));
     });
 
     // Renders a story file

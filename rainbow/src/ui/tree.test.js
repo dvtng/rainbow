@@ -1,6 +1,6 @@
-const { describe, it } = require('mocha');
-const { expect } = require('chai');
-const { tree, collapsedTree } = require('./tree');
+import { describe, it } from 'mocha';
+import { expect } from 'chai';
+import { tree, collapsedTree } from './tree';
 
 describe('tree test', () => {
     it('should turn single path into tree', () => {

@@ -5,23 +5,7 @@ import Nav from './nav';
 import NavModel from '../nav-model';
 
 const nav = new NavModel({
-    fileTree: {
-        name: 'my-project',
-        children: [
-            {
-                name: 'components',
-                children: [
-                    {
-                        name: 'dir1/dir2',
-                        children: [{ name: 'foo.story.js' }]
-                    },
-                    {
-                        name: 'bar.story.js'
-                    }
-                ]
-            }
-        ]
-    }
+    storyFiles: ['components/dir1/dir2/foo.story.js', 'components/bar.story.js']
 });
 
 export default (

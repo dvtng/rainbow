@@ -1,4 +1,5 @@
 import { observable, action, computed } from 'mobx';
+import { collapsedTree } from './tree.js';
 
 const sortStories = stories => {
     const withoutDefault = stories.filter(story => story !== 'default').sort();
@@ -12,7 +13,7 @@ export default class NavModel {
         Object.assign(this, state);
     }
 
-    @observable fileTree = null;
+    @observable storyFiles = null;
 
     @observable selectedFile = null;
 
@@ -23,8 +24,8 @@ export default class NavModel {
     @action
     loadFileTree = () => {
         fetch('/story-list').then(resp => resp.json()).then(
-            action(fileTree => {
-                this.fileTree = fileTree;
+            action(storyFiles => {
+                this.storyFiles = storyFiles;
             })
         );
     };
@@ -50,4 +51,9 @@ export default class NavModel {
     selectStory = story => {
         this.selectedStory = story;
     };
+
+    @computed
+    get tree() {
+        return this.storyFiles ? collapsedTree(this.storyFiles, 'root') : null;
+    }
 }

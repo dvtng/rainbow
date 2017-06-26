@@ -17,5 +17,5 @@ const Explorer = ({ fileTree }) =>
     </Container>;
 
 export default inject(stores => ({
-    fileTree: stores.nav.fileTree
+    fileTree: stores.nav.tree
 }))(observer(Explorer));
