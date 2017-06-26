@@ -20,8 +20,8 @@ export const FileInfo = ({ file }) => {
     const parts = split(file);
     return (
         <div>
-            <Path>{parts[1]}</Path>
-            <File>{parts[2]}</File>
+            <Path>{parts ? parts[0] : ''}</Path>
+            <File>{parts ? parts[1] : file}</File>
         </div>
     );
 };
