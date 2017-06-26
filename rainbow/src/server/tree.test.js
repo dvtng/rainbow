@@ -24,7 +24,7 @@ describe('tree test', () => {
                 }
             ]
         };
-        expect(tree(paths)).to.deep.equal(expectedTree);
+        expect(tree(paths, 'root')).to.deep.equal(expectedTree);
     });
 
     it('should turn multiple paths into tree', () => {
@@ -54,7 +54,7 @@ describe('tree test', () => {
                 }
             ]
         };
-        expect(tree(paths)).to.deep.equal(expectedTree);
+        expect(tree(paths, 'root')).to.deep.equal(expectedTree);
     });
 
     it('should turn paths with depth of 3 into tree', () => {
@@ -87,7 +87,7 @@ describe('tree test', () => {
             ]
         };
 
-        expect(tree(paths)).to.deep.equal(expectedTree);
+        expect(tree(paths, 'root')).to.deep.equal(expectedTree);
     });
 });
 
@@ -112,7 +112,9 @@ describe('collapsed tree test', () => {
             ]
         };
 
-        expect(collapsedTree(paths)).to.deep.equal(expectedCollapsedTree);
+        expect(collapsedTree(paths, 'root')).to.deep.equal(
+            expectedCollapsedTree
+        );
     });
 
     it('should collapse branches with nested childs', () => {
@@ -135,7 +137,9 @@ describe('collapsed tree test', () => {
             ]
         };
 
-        expect(collapsedTree(paths)).to.deep.equal(expectedCollapsedTree);
+        expect(collapsedTree(paths, 'root')).to.deep.equal(
+            expectedCollapsedTree
+        );
     });
 
     it('should collapse deeply nested leaf', () => {
@@ -155,7 +159,9 @@ describe('collapsed tree test', () => {
             ]
         };
 
-        expect(collapsedTree(paths)).to.deep.equal(expectedCollapsedTree);
+        expect(collapsedTree(paths, 'root'), 'root').to.deep.equal(
+            expectedCollapsedTree
+        );
     });
 
     it('should not collapse if no only child branches', () => {
@@ -183,6 +189,8 @@ describe('collapsed tree test', () => {
             ]
         };
 
-        expect(collapsedTree(paths)).to.deep.equal(expectedCollapsedTree);
+        expect(collapsedTree(paths, 'root')).to.deep.equal(
+            expectedCollapsedTree
+        );
     });
 });
