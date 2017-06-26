@@ -1,6 +1,7 @@
 import React from 'react';
 
-export default () => <input value="Here is a nested example" />;
+export default () =>
+    <input value="Here is a nested example" onChange={() => {}} />;
 
 export const ABC = <input />;
 
