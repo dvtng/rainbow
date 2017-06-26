@@ -1,9 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import ExplorerItem from './explorer-item';
-import { circleSize, itemHeight } from './sizes';
-
-const indent = 22;
+import { circleSize, itemHeight, indent } from './sizes';
 
 const Container = styled.div`
     color: #fff;

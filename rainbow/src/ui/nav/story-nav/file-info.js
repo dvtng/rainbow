@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { inject, observer } from 'mobx-react';
+import Circle from '../file-nav/circle';
 
 const pattern = /(.*)\/(.*)/;
 const split = file => pattern.exec(file);
@@ -25,7 +26,7 @@ export const FileInfo = ({ file }) => {
     return (
         <Container>
             <Path>{parts ? parts[1] : ''}</Path>
-            <File>{parts ? parts[2] : file}</File>
+            <File><Circle isFilled isSelected />{parts ? parts[2] : file}</File>
         </Container>
     );
 };

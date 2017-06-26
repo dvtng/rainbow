@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { circleSize } from './sizes';
 
 const Circle = styled.div`
+    background: ${props => (props.isFilled ? '#275FA6' : 'transparent')};
     border: 1px solid;
     border-color: ${props => (props.isSelected ? '#fff' : '#999')};
     border-radius: 50%;

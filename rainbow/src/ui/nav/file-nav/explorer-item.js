@@ -11,8 +11,9 @@ const Container = styled.div`
 const OuterCircle = styled.div`
     border: 3px solid #275FA6;
     border-radius: 50%;
-    height: 19px;
-    width: 19px;
+    box-sizing: border-box;
+    height: ${circleSize + 6}px;
+    width: ${circleSize + 6}px;
     margin-left: -4px;
     margin-top: -4px;
 `;
