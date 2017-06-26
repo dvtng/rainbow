@@ -1,1 +1,0 @@
-module.exports = require('/Users/dt/src/rainbow/rainbow/src/ui/nav/story.js');

@@ -3,7 +3,7 @@ const path = require('path');
 const startStoryDevServer = require('./start-story-dev-server');
 const EventEmitter = require('events');
 
-const storyEntry = path.resolve(__dirname, './temp/rainbow-entry.js');
+const storyEntry = path.resolve(__dirname, '../../build/rainbow-entry.js');
 const events = new EventEmitter();
 
 const writeStoryEntry = contents =>
