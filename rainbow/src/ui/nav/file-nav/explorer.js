@@ -5,7 +5,7 @@ import Dir from './dir';
 import ExplorerFilter from './explorer-filter';
 
 const Container = styled.div`
-    padding: 16px 0;
+    padding: 16px 24px;
 `;
 
 const Explorer = ({ fileTree }) =>

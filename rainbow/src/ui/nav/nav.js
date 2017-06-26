@@ -8,8 +8,8 @@ const Container = NavStyle.extend`
     box-sizing: border-box;
     flex-shrink: 0;
     min-height: 400px;
-    padding: 32px;
-    width: 332px;
+    padding: 24px 0;
+    width: 300px;
 `;
 
 const H1 = styled.h1`
@@ -18,6 +18,7 @@ const H1 = styled.h1`
     font-family: 'Lily Script One', cursive;
     font-weight: normal;
     margin: 0;
+    padding: 0 24px;
 `;
 
 const Nav = () =>

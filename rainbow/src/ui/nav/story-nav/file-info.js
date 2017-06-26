@@ -5,6 +5,10 @@ import { inject, observer } from 'mobx-react';
 const pattern = /(.*)\/(.*)/;
 const split = file => pattern.exec(file);
 
+const Container = styled.div`
+    padding: 0 24px;
+`;
+
 const Path = styled.div`
     color: #808080;
     margin-bottom: 8px;
@@ -19,10 +23,10 @@ export const FileInfo = ({ file }) => {
 
     const parts = split(file);
     return (
-        <div>
+        <Container>
             <Path>{parts ? parts[1] : ''}</Path>
             <File>{parts ? parts[2] : file}</File>
-        </div>
+        </Container>
     );
 };
 

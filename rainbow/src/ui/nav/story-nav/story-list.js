@@ -2,24 +2,15 @@ import React from 'react';
 import { inject, observer } from 'mobx-react';
 import styled from 'styled-components';
 import Case from 'case';
+import StoryItem from './story-item';
 
-const StoryItem = styled.a`
-    background-color: ${props =>
-        props.isSelected ? '#606060' : 'transparent'};
-    border-left: 4px solid;
-    border-color: ${props => (props.isSelected ? '#C4C4C4' : 'transparent')};
-    cursor: pointer;
-    display: block;
-    padding: 12px 16px;
-
-    &:hover {
-        background-color: #505050;
-    }
+const Container = styled.div`
+    padding-left: 24px;
 `;
 
 export const StoryList = ({ stories, selectedStory, onSelect }) =>
     stories
-        ? <div>
+        ? <Container>
               {stories.map(story =>
                   <StoryItem
                       key={story}
@@ -29,7 +20,7 @@ export const StoryList = ({ stories, selectedStory, onSelect }) =>
                       {Case.sentence(story)}
                   </StoryItem>
               )}
-          </div>
+          </Container>
         : null;
 
 export default inject(stores => ({
