@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import ExplorerItem from './explorer-item';
-import { circleSize, itemHeight, indent } from './sizes';
+import { indent } from './sizes';
+import { VerticalLine, HorizontalLine } from './lines';
 
 const Container = styled.div`
     color: #fff;
@@ -17,25 +18,6 @@ const Li = styled.li`
     position: relative;
 `;
 
-const VerticalLine = styled.div`
-    background-color: #999;
-    height: ${props => props.length * itemHeight - circleSize / 2}px;
-    left: ${-indent + circleSize / 2}px;
-    position: absolute;
-    top: ${props =>
-        itemHeight / 2 - (props.length * itemHeight - circleSize / 2)}px;
-    width: 1px;
-`;
-
-const HorizontalLine = styled.div`
-    background-color: #999;
-    height: 1px;
-    left: ${-indent + circleSize / 2}px;
-    position: absolute;
-    top: ${itemHeight / 2}px;
-    width: ${indent - circleSize / 2}px;
-`;
-
 const isDir = file => file.children && file.children.length;
 
 const Dir = ({ name, path, children }) =>
@@ -44,7 +26,7 @@ const Dir = ({ name, path, children }) =>
         <Ul>
             {children.map((child, i) =>
                 <Li key={child.name}>
-                    <VerticalLine length={i + 1} />
+                    <VerticalLine segments={i + 1} />
                     <HorizontalLine />
                     {isDir(child)
                         ? <Dir name={child.name} path={path + child.name + '/'}>
