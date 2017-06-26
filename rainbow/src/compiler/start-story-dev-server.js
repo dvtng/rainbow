@@ -30,17 +30,23 @@ const getWebpackConfigFor = ({ filename, port }) => {
 
 let server = null;
 
-module.exports = ({ filename, port }) => {
+module.exports = ({ storyEntry, port, onDone }) => {
     if (server) {
         server.close();
     }
 
-    console.log(`Starting webpack dev server for ${filename} on port ${port}`);
+    console.log(`Starting webpack dev server at http://localhost:${port}`);
 
-    const compiler = webpack(getWebpackConfigFor({ filename, port }));
-    server = new WebpackDevServer(compiler, {
-        quiet: true
+    return new Promise((resolve, reject) => {
+        const compiler = webpack(
+            getWebpackConfigFor({ filename: storyEntry, port })
+        );
+        compiler.plugin('done', onDone);
+        server = new WebpackDevServer(compiler, {
+            quiet: true
+        });
+        server.listen(port, 'localhost', () => {
+            resolve(server);
+        });
     });
-    server.listen(port);
-    return server;
 };
