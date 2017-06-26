@@ -1,9 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import { inject } from 'mobx-react';
+import Circle from './circle';
+import { itemHeight, circleSize } from './sizes';
 
 const Container = styled.div`
-    padding: 6px 0;
+    padding: ${(itemHeight - circleSize) / 2}px 0;
 `;
 
 const OuterCircle = styled.div`
@@ -13,17 +15,6 @@ const OuterCircle = styled.div`
     width: 19px;
     margin-left: -4px;
     margin-top: -4px;
-`;
-
-const Circle = styled.div`
-    border: 1px solid;
-    border-color: ${props => (props.isSelected ? '#fff' : '#999')};
-    border-radius: 50%;
-    display: inline-block;
-    height: 17px;
-    margin-right: 8px;
-    width: 17px;
-    vertical-align: bottom;
 `;
 
 const Link = styled.a`
