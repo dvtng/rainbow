@@ -6,14 +6,19 @@ import NavModel from '../nav-model';
 
 const nav = new NavModel({
     fileTree: {
-        name: 'components',
+        name: 'my-project',
         children: [
             {
-                name: 'dir1/dir2',
-                children: [{ name: 'foo.story.js' }]
-            },
-            {
-                name: 'bar.story.js'
+                name: 'components',
+                children: [
+                    {
+                        name: 'dir1/dir2',
+                        children: [{ name: 'foo.story.js' }]
+                    },
+                    {
+                        name: 'bar.story.js'
+                    }
+                ]
             }
         ]
     }
