@@ -11,7 +11,7 @@ const Container = styled.div`
 
 const Ul = styled.ul`
     margin: 0;
-    padding-left: ${indent};
+    padding-left: ${indent}px;
 `;
 
 const Li = styled.li`
@@ -22,7 +22,7 @@ const Li = styled.li`
 const VerticalLine = styled.div`
     background-color: #999;
     height: ${props => props.length * itemHeight - circleSize / 2}px;
-    left: ${-indent + circleSize / 2};
+    left: ${-indent + circleSize / 2}px;
     position: absolute;
     top: ${props =>
         itemHeight / 2 - (props.length * itemHeight - circleSize / 2)}px;
@@ -32,10 +32,10 @@ const VerticalLine = styled.div`
 const HorizontalLine = styled.div`
     background-color: #999;
     height: 1px;
-    left: ${-indent + circleSize / 2};
+    left: ${-indent + circleSize / 2}px;
     position: absolute;
-    top: ${itemHeight / 2};
-    width: ${indent - circleSize / 2};
+    top: ${itemHeight / 2}px;
+    width: ${indent - circleSize / 2}px;
 `;
 
 const isDir = file => file.children && file.children.length;
