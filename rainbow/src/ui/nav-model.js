@@ -30,6 +30,11 @@ export default class NavModel {
     };
 
     @action
+    filterFiles = filter => {
+        this.filesFilter = filter;
+    };
+
+    @action
     selectFile = storyFile => {
         this.selectedFile = storyFile;
         this.stories = null;

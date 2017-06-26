@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { inject, observer } from 'mobx-react';
 import Dir from './dir';
+import ExplorerFilter from './explorer-filter';
 
 const Container = styled.div`
     padding: 16px 0;
@@ -9,6 +10,7 @@ const Container = styled.div`
 
 const Explorer = ({ fileTree }) =>
     <Container>
+        <ExplorerFilter />
         {fileTree
             ? <Dir name={fileTree.name} path="">{fileTree.children}</Dir>
             : null}
