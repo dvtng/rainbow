@@ -21,6 +21,8 @@ export default class NavModel {
 
     @observable selectedStory = null;
 
+    @observable filesFilter = null;
+
     @action
     loadFileTree = () => {
         fetch('/story-list').then(resp => resp.json()).then(
@@ -54,6 +56,18 @@ export default class NavModel {
 
     @computed
     get tree() {
-        return this.storyFiles ? collapsedTree(this.storyFiles, 'root') : null;
+        let storyFiles = this.storyFiles;
+        if (!this.storyFiles) {
+            return null;
+        }
+
+        storyFiles = this.storyFiles.slice();
+        if (this.filesFilter && this.filesFilter.length) {
+            storyFiles = _.filter(storyFiles, file =>
+                file.includes(this.filesFilter)
+            );
+        }
+
+        return collapsedTree(storyFiles, 'root');
     }
 }

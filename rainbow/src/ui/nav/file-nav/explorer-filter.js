@@ -11,6 +11,7 @@ const Input = styled.input`
     color: #fff;
     outline: none;
     border: none;
+    font-size: 16px;
 `;
 
 const ExplorerFilter = ({ onFilterChange, fileFilter }) =>
