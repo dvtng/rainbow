@@ -6,7 +6,7 @@ const Line = styled.div`
     background-color: ${props => (props.isActive ? '#fff' : '#4f4f4f')};
     position: absolute;
     z-index: ${props => (props.isActive ? 1 : 0)};
-    transition: 0.4s all;
+    transition: 0.4s background-color;
 `;
 
 const BranchContainer = styled.div`
