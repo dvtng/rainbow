@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+import { inject, observer } from 'mobx-react';
 import ExplorerItem from './explorer-item';
 import { indent } from './sizes';
-import { VerticalLine, HorizontalLine } from './lines';
+import { Branch, SiblingJoiner } from './lines';
 
 const Container = styled.div`
     color: #fff;
@@ -10,7 +11,7 @@ const Container = styled.div`
 
 const Ul = styled.ul`
     margin: 0;
-    padding-left: ${indent}px;
+    padding-left: ${props => props.indent}px;
 `;
 
 const Li = styled.li`
@@ -20,24 +21,56 @@ const Li = styled.li`
 
 const isDir = file => file.children && file.children.length;
 
-const Dir = ({ name, path, children }) =>
-    <Container>
-        <ExplorerItem>{name}</ExplorerItem>
-        <Ul>
-            {children.map((child, i) =>
-                <Li key={child.name}>
-                    <VerticalLine segments={i + 1} />
-                    <HorizontalLine />
-                    {isDir(child)
-                        ? <Dir name={child.name} path={path + child.name + '/'}>
-                              {child.children}
-                          </Dir>
-                        : <ExplorerItem storyFile={path + child.name}>
-                              {child.name}
-                          </ExplorerItem>}
-                </Li>
-            )}
-        </Ul>
-    </Container>;
+const isFileInPath = (path, file) => file && file.startsWith(path);
 
-export default Dir;
+const joinPath = (parentPath, node) =>
+    parentPath + node.name + (isDir(node) ? '/' : '');
+
+const isLaterSiblingActive = (parentPath, activeFile, laterSiblings) =>
+    isFileInPath(parentPath, activeFile) &&
+    laterSiblings.some(sibling =>
+        isFileInPath(joinPath(parentPath, sibling), activeFile)
+    );
+
+const Dir = ({ name, path, selectedFile, children }) =>
+    <Ul indent={path ? indent : 0}>
+        {children.map((child, i) => {
+            const childPath = joinPath(path, child);
+            const isLast = i === children.length - 1;
+            const shouldJoin = isLaterSiblingActive(
+                path,
+                selectedFile,
+                children.slice(i + 1)
+            );
+
+            return (
+                <Li key={child.name}>
+                    {path &&
+                        <Branch
+                            isFirst={i === 0}
+                            isActive={isFileInPath(childPath, selectedFile)}
+                            shouldJoin={shouldJoin}
+                        />}
+                    {path && !isLast && <SiblingJoiner isActive={shouldJoin} />}
+                    <ExplorerItem
+                        isActive={isFileInPath(childPath, selectedFile)}
+                        storyFile={!isDir(child) && childPath}
+                    >
+                        {child.name}
+                    </ExplorerItem>
+                    {isDir(child) &&
+                        <Dir
+                            name={child.name}
+                            path={childPath}
+                            selectedFile={selectedFile}
+                        >
+                            {child.children}
+                        </Dir>}
+                </Li>
+            );
+        })}
+    </Ul>;
+
+export default inject(stores => ({
+    selectedFile: stores.nav.selectedFile
+}))(observer(Dir));

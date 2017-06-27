@@ -9,7 +9,9 @@ const createNav = () =>
         storyFiles: [
             'components/dir1/dir2/foo.story.js',
             'components/dir1/dir2/foo2.story.js',
-            'components/bar.story.js'
+            'components/bar.story.js',
+            'components/bar2.story.js',
+            'pages/story.js'
         ]
     });
 

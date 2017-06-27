@@ -29,9 +29,15 @@ const Text = styled.span`
     color: #999;
 `;
 
-export const ExplorerItem = ({ storyFile, isSelected, children, onSelect }) =>
+export const ExplorerItem = ({
+    storyFile,
+    isActive,
+    isSelected,
+    children,
+    onSelect
+}) =>
     <Container>
-        <Circle isSelected={isSelected}>
+        <Circle isSelected={isSelected || isActive}>
             {isSelected && <OuterCircle />}
         </Circle>
         {storyFile

@@ -3,23 +3,39 @@ import styled from 'styled-components';
 import { circleSize, itemHeight, indent } from './sizes';
 
 const Line = styled.div`
-    background-color: #999;
+    background-color: ${props => (props.isActive ? '#fff' : '#4f4f4f')};
     position: absolute;
+    z-index: ${props => (props.isActive ? 1 : 0)};
+    transition: 0.4s all;
 `;
 
-const VerticalLineLength = Line.extend`
-    height: ${props => props.length}px;
+const BranchContainer = styled.div`
+    bottom: ${itemHeight / 2}px;
+    height: 100%;
+    position: absolute;
     left: ${-indent + circleSize / 2}px;
-    top: ${props => itemHeight / 2 - props.length}px;
+    width: 0;
+`;
+
+const HLine = Line.extend`
+    height: 1px;
+    top: ${itemHeight}px;
+    width: ${indent - circleSize / 2}px;
+`;
+
+const VLine = Line.extend`
+    height: ${props => itemHeight - (props.isFirst ? circleSize / 2 : 0)}px;
+    top: ${props => (props.isFirst ? circleSize / 2 : 0)}px;
     width: 1px;
 `;
 
-export const VerticalLine = ({ segments }) =>
-    <VerticalLineLength length={segments * itemHeight - circleSize / 2} />;
+export const Branch = ({ isActive, shouldJoin, isFirst }) =>
+    <BranchContainer>
+        <HLine isActive={isActive} />
+        <VLine isActive={isActive || shouldJoin} isFirst={isFirst} />
+    </BranchContainer>;
 
-export const HorizontalLine = Line.extend`
-    height: 1px;
-    left: ${-indent + circleSize / 2}px;
-    top: ${itemHeight / 2}px;
-    width: ${indent - circleSize / 2}px;
+export const SiblingJoiner = VLine.extend`
+    height: calc(100% - ${itemHeight}px);
+    transform: translate(${-indent + circleSize / 2}px, ${itemHeight / 2}px);
 `;
