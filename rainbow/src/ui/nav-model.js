@@ -21,7 +21,7 @@ export default class NavModel {
 
     @observable selectedStory = null;
 
-    @observable filesFilter = null;
+    @observable fileFilter = '';
 
     @action
     loadFileTree = () => {
@@ -34,7 +34,7 @@ export default class NavModel {
 
     @action
     filterFiles = filter => {
-        this.filesFilter = filter;
+        this.fileFilter = filter;
     };
 
     @action
@@ -65,9 +65,9 @@ export default class NavModel {
         }
 
         storyFiles = this.storyFiles.slice();
-        if (this.filesFilter && this.filesFilter.length) {
+        if (this.fileFilter) {
             storyFiles = _.filter(storyFiles, file =>
-                file.includes(this.filesFilter)
+                file.includes(this.fileFilter)
             );
         }
 

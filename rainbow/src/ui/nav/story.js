@@ -35,3 +35,15 @@ export const withSelectedFileAndStories = () => {
         </Provider>
     );
 };
+
+export const withFiltering = () => {
+    const nav = createNav();
+    nav.filterFiles('foo');
+    return (
+        <Provider nav={nav}>
+            <Typography>
+                <Nav />
+            </Typography>
+        </Provider>
+    );
+};
