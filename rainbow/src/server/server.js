@@ -16,7 +16,7 @@ module.exports = ({ port }) => {
 
     // Get list of all story files
     app.get('/story-list', (req, res) => {
-        getStoryFiles().then(storyFiles => res.send(storyFiles));
+        getStoryFiles().toArray().subscribe(storyFiles => res.send(storyFiles));
     });
 
     // Renders a story file

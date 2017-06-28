@@ -1,16 +1,29 @@
 const path = require('path');
-const glob = require('glob');
+const fs = require('fs');
+const { Observable } = require('rxjs');
 
-const storyGlob = '**/@(*.story|story).+(js|jsx|ts|tsx)';
+const filePattern = /[/.]story\.(js|jsx|ts|tsx)/;
+
+const readdir = Observable.bindNodeCallback(fs.readdir);
+const stat = Observable.bindNodeCallback(fs.stat);
+
+const walk = (dir, skip) =>
+    readdir(dir).mergeMap(files =>
+        Observable.from(files).mergeMap(file => {
+            const filePath = path.resolve(dir, file);
+            return stat(filePath).mergeMap(
+                stat =>
+                    stat.isDirectory()
+                        ? skip && skip(filePath)
+                          ? Observable.empty()
+                          : walk(filePath, skip)
+                        : Observable.of(filePath)
+            );
+        })
+    );
 
 module.exports = (cwd = process.cwd()) => {
-    return new Promise((resolve, reject) => {
-        glob(storyGlob, { cwd }, (err, files) => {
-            if (err) {
-                reject(err);
-            } else {
-                resolve(files);
-            }
-        });
-    });
+    return walk(cwd, dir => dir.endsWith('node_modules'))
+        .filter(file => filePattern.test(file))
+        .map(file => file.substr(cwd.length + 1));
 };
