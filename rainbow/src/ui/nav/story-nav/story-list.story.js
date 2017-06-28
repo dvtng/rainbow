@@ -7,9 +7,9 @@ export default (
     <Typography>
         <NavStyle>
             <StoryList
-                stories={['default', 'story1', 'story2']}
-                selectedStory="story2"
-                onSelect={() => {}}
+              stories={['default', 'story1', 'story2']}
+              selectedStory="story2"
+              onSelect={() => {}}
             />
         </NavStyle>
     </Typography>

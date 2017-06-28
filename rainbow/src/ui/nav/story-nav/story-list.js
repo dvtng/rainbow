@@ -9,19 +9,19 @@ const Container = styled.div`
 `;
 
 export const StoryList = ({ stories, selectedStory, onSelect }) =>
-    stories
+    (stories
         ? <Container>
-              {stories.map(story =>
-                  <StoryItem
-                      key={story}
-                      isSelected={selectedStory === story}
-                      onClick={() => onSelect(story)}
-                  >
-                      {Case.sentence(story)}
-                  </StoryItem>
-              )}
-          </Container>
-        : null;
+            {stories.map(story => (
+                <StoryItem
+                  key={story}
+                  isSelected={selectedStory === story}
+                  onClick={() => onSelect(story)}
+                >
+                    {Case.sentence(story)}
+                </StoryItem>
+              ))}
+        </Container>
+        : null);
 
 export default inject(stores => ({
     stories: stores.nav.stories,

@@ -22,11 +22,12 @@ const H1 = styled.h1`
     padding: 0 24px;
 `;
 
-const Nav = () =>
+const Nav = () => (
     <Container>
         <H1>Rainbow</H1>
         <Explorer />
         <StoryNav />
-    </Container>;
+    </Container>
+);
 
 export default Nav;

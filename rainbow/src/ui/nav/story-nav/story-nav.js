@@ -2,10 +2,11 @@ import React from 'react';
 import FileInfo from './file-info';
 import StoryList from './story-list';
 
-const StoryNav = () =>
+const StoryNav = () => (
     <div>
         <FileInfo />
         <StoryList />
-    </div>;
+    </div>
+);
 
 export default StoryNav;

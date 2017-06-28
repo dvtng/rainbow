@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 var React = window.React;
 var ReactDOM = window.ReactDOM;
 var stories = window.stories;
