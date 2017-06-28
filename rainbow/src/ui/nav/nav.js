@@ -8,6 +8,7 @@ const Container = NavStyle.extend`
     box-sizing: border-box;
     flex-shrink: 0;
     min-height: 400px;
+    overflow: scroll;
     padding: 24px 0;
     width: 300px;
 `;
