@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { inject } from 'mobx-react';
 import Circle from './circle';
 import { itemHeight, circleSize } from './sizes';
+import displayFilename from '../display-filename';
 
 const Container = styled.div`
     padding: ${(itemHeight - circleSize) / 2}px 0;
@@ -42,7 +43,7 @@ export const ExplorerItem = ({
         </Circle>
         {storyFile
             ? <Link title={storyFile} onClick={() => onSelect(storyFile)}>
-                  {children}
+                  {displayFilename(children)}
               </Link>
             : <Text>{children}</Text>}
     </Container>;
