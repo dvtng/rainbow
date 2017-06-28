@@ -1,11 +1,14 @@
 import React from 'react';
 import FileInfo from './file-info';
 import StoryList from './story-list';
+import { inject, observer } from 'mobx-react';
 
-const StoryNav = () =>
+const StoryNav = ({ isFileSelected }) =>
     <div>
         <FileInfo />
-        <StoryList />
+        {isFileSelected && <StoryList />}
     </div>;
 
-export default StoryNav;
+export default inject(stores => ({
+    isFileSelected: !!stores.nav.selectedFile
+}))(observer(StoryNav));

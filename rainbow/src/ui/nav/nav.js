@@ -4,15 +4,6 @@ import Explorer from './file-nav/explorer';
 import StoryNav from './story-nav/story-nav';
 import NavStyle from './nav-style';
 
-const Container = NavStyle.extend`
-    box-sizing: border-box;
-    flex-shrink: 0;
-    min-height: 400px;
-    overflow: scroll;
-    padding: 24px 0;
-    width: 300px;
-`;
-
 const H1 = styled.h1`
     color: #fff;
     font-size: 32px;
@@ -23,10 +14,10 @@ const H1 = styled.h1`
 `;
 
 const Nav = () =>
-    <Container>
+    <NavStyle>
         <H1>Rainbow</H1>
         <Explorer />
         <StoryNav />
-    </Container>;
+    </NavStyle>;
 
 export default Nav;
