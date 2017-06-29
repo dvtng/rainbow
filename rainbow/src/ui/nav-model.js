@@ -24,6 +24,14 @@ export default class NavModel {
 
     @observable fileFilter = '';
 
+    @observable storyError = null;
+
+    // Move this to another model
+    @action
+    storyErrored = storyError => {
+        this.storyError = storyError;
+    };
+
     @action
     loadFileTree = () => {
         fetch('/story-list').then(resp => resp.json()).then(
