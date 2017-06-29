@@ -17,19 +17,17 @@ export default (
 
 export const loadingState = (
     <Typography>
-        <NavStyle>
-            <div style={{ display: 'flex' }}>
-                <div style={{ width: '50%' }}>
-                    <StoryList stories={null} onSelect={() => {}} />
-                </div>
-                <div style={{ width: '50%' }}>
-                    <StoryList
-                        stories={['default', 'story1', 'story2']}
-                        selectedStory="story2"
-                        onSelect={() => {}}
-                    />
-                </div>
-            </div>
-        </NavStyle>
+        <div style={{ display: 'flex' }}>
+            <NavStyle>
+                <StoryList stories={null} onSelect={() => {}} />
+            </NavStyle>
+            <NavStyle>
+                <StoryList
+                    stories={['default', 'story1', 'story2']}
+                    selectedStory="story2"
+                    onSelect={() => {}}
+                />
+            </NavStyle>
+        </div>
     </Typography>
 );
