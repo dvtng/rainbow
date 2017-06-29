@@ -7,7 +7,7 @@ const Error = styled.div`
     color: #fff;
 `;
 
-export class StoryViewer extends Component {
+class StoryViewer extends Component {
     setNewIframe = iframe => {
         if (!iframe) return;
         iframe.addEventListener('load', () => {
@@ -17,8 +17,10 @@ export class StoryViewer extends Component {
             this.props.setStories(stories);
         });
 
+        const that = this;
         iframe.contentWindow.addEventListener('error', error => {
-            this.props.storyErrored(error);
+            console.log(error);
+            that.props.storyErrored(error);
         });
     };
 
@@ -31,7 +33,9 @@ export class StoryViewer extends Component {
         return storyError
             ? <Error>
                   <h2>
-                      {`${storyError.name}: ${storyError.message}`}
+                      {storyError.name
+                          ? `${storyError.name}: ${storyError.message}`
+                          : storyError.message}
                   </h2>
                   <p>
                       {storyError.stack}
@@ -53,5 +57,6 @@ export default inject(stores => ({
     selectedFile: stores.nav.selectedFile,
     selectedStory: stores.nav.selectedStory,
     setStories: stores.nav.setStories,
-    storyError: stores.nav.storyError
+    storyError: stores.nav.storyError,
+    storyErrored: stores.nav.storyErrored
 }))(observer(StoryViewer));

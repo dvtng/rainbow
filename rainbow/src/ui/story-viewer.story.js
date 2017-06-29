@@ -1,16 +1,16 @@
 import React from 'react';
-import StoryViewerConnected, { StoryViewer } from './story-viewer';
+import StoryViewer from './story-viewer';
 import NavModel from './nav-model';
 import { Provider } from 'mobx-react';
 
 export default () => {
+    const nav = new NavModel({});
+    nav.selectFile('path/to/story.js');
+    nav.setStories(['default']);
     return (
-        <StoryViewer
-            selectedFile="src/ui/nav/story.js"
-            selectedStory="default"
-            setStories={() => {}}
-            src={'/broken-story.html'}
-        />
+        <Provider nav={nav}>
+            <StoryViewer src={'/broken-story.html'} />
+        </Provider>
     );
 };
 
@@ -19,7 +19,7 @@ export const rendersError = () => {
     nav.storyErrored(new Error('This is a sample error'));
     return (
         <Provider nav={nav}>
-            <StoryViewerConnected />
+            <StoryViewer />
         </Provider>
     );
 };
