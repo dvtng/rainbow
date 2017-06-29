@@ -1,8 +1,20 @@
 {
     "parser": "babel-eslint",
     "extends": "eslint:recommended",
+    "plugins": ["import"],
     "rules": {
-        "no-console": "off"
+        "no-console": "off",
+        "import/no-unresolved": ["error", { "commonjs": true }],
+        "import/default": "error",
+        "import/named": "error",
+        "import/namespace": "error",
+        "import/export": "error",
+        "import/no-named-as-default-member": "error",
+        "import/no-deprecated": "error",
+        "import/no-extraneous-dependencies": "error",
+        "import/first": "error",
+        "import/no-duplicates": "error",
+        "import/extensions": ["error", "never"]
     },
     "env": {
         "node": true,
