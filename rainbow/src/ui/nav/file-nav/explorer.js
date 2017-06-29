@@ -4,7 +4,7 @@ import { inject, observer } from 'mobx-react';
 import Dir from './dir';
 import ExplorerFilter from './explorer-filter';
 
-const Container = styled.div`padding: 16px 24px;`;
+const Container = styled.div`padding: 0 24px;`;
 
 const Explorer = ({ fileTree }) =>
     <Container>

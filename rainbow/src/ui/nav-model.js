@@ -46,6 +46,13 @@ export default class NavModel {
     };
 
     @action
+    unselectFile = () => {
+        this.selectedFile = null;
+        this.selectedStory = null;
+        this.stories = null;
+    };
+
+    @action
     setStories = stories => {
         this.stories = sortStories(stories);
         if (!this.stories.includes(this.selectedStory)) {
