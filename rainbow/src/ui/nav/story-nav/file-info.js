@@ -20,13 +20,13 @@ const Path = styled.div`
     margin-bottom: 4px;
 `;
 
-export const FileInfo = ({ file, unselectFile }) => {
+export const FileInfo = ({ file, goBack }) => {
     if (!file) return null;
 
     const parts = split(file);
     return (
         <Container>
-            <ArrowLeft onClick={unselectFile} />
+            <ArrowLeft onClick={goBack} />
             <div>
                 <Path>
                     {parts ? parts[1] : ''}
@@ -42,5 +42,5 @@ export const FileInfo = ({ file, unselectFile }) => {
 
 export default inject(stores => ({
     file: stores.nav.selectedFile,
-    unselectFile: stores.nav.unselectFile
+    goBack: stores.nav.goBack
 }))(observer(FileInfo));

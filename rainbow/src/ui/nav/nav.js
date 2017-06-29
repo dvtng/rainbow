@@ -15,15 +15,16 @@ const H1 = styled.h1`
     padding: 0 24px;
 `;
 
-const Nav = ({ selectedFile }) =>
+const Nav = ({ selectedFile, isViewingFiles }) =>
     <NavStyle>
         <H1>Rainbow</H1>
-        <Carousel active={selectedFile ? 1 : 0}>
+        <Carousel active={isViewingFiles || !selectedFile ? 0 : 1}>
             <Explorer />
             <StoryNav />
         </Carousel>
     </NavStyle>;
 
 export default inject(stores => ({
-    selectedFile: stores.nav.selectedFile
+    selectedFile: stores.nav.selectedFile,
+    isViewingFiles: stores.nav.isViewingFiles
 }))(observer(Nav));

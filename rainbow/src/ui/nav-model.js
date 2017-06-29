@@ -24,6 +24,8 @@ export default class NavModel {
 
     @observable fileFilter = '';
 
+    @observable isViewingFiles = false;
+
     @action
     loadFileTree = () => {
         fetch('/story-list').then(resp => resp.json()).then(
@@ -40,16 +42,17 @@ export default class NavModel {
 
     @action
     selectFile = storyFile => {
-        this.selectedFile = storyFile;
-        this.selectedStory = null;
-        this.stories = null;
+        if (this.selectedFile !== storyFile) {
+            this.selectedFile = storyFile;
+            this.selectedStory = null;
+            this.stories = null;
+        }
+        this.isViewingFiles = false;
     };
 
     @action
-    unselectFile = () => {
-        this.selectedFile = null;
-        this.selectedStory = null;
-        this.stories = null;
+    goBack = () => {
+        this.isViewingFiles = true;
     };
 
     @action
