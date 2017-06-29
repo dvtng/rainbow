@@ -9,6 +9,7 @@ const NavStyle = styled.div`
     flex-shrink: 0;
     overflow: scroll;
     padding: 24px 0;
+    position: relative;
     width: 300px;
 `;
 
