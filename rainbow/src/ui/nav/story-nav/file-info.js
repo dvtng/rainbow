@@ -17,7 +17,7 @@ const Container = styled.div`
 
 const Path = styled.div`
     color: #808080;
-    margin-bottom: 8px;
+    margin-bottom: 4px;
 `;
 
 export const FileInfo = ({ file, unselectFile }) => {
