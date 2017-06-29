@@ -7,18 +7,14 @@ import displayFilename from '../display-filename';
 const pattern = /(.*)\/(.*)/;
 const split = file => pattern.exec(file);
 
-const Container = styled.div`
-    padding: 0 24px;
-`;
+const Container = styled.div`padding: 0 24px;`;
 
 const Path = styled.div`
     color: #808080;
     margin-bottom: 8px;
 `;
 
-const File = styled.div`
-    margin-bottom: 8px;
-`;
+const File = styled.div`margin-bottom: 8px;`;
 
 export const FileInfo = ({ file }) => {
     if (!file) return null;
@@ -26,7 +22,9 @@ export const FileInfo = ({ file }) => {
     const parts = split(file);
     return (
         <Container>
-            <Path>{parts ? parts[1] : ''}</Path>
+            <Path>
+                {parts ? parts[1] : ''}
+            </Path>
             <File>
                 <Circle isFilled isSelected />
                 {displayFilename(parts ? parts[2] : file)}

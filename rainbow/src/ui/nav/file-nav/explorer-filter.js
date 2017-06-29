@@ -20,13 +20,12 @@ const Input = styled.input`
     }
 `;
 
-const ExplorerFilter = ({ onFilterChange, fileFilter }) => (
+const ExplorerFilter = ({ onFilterChange, fileFilter }) =>
     <Input
-      placeholder="Filter"
-      value={fileFilter}
-      onChange={e => onFilterChange(e.target.value)}
-    />
-);
+        placeholder="Filter"
+        value={fileFilter}
+        onChange={e => onFilterChange(e.target.value)}
+    />;
 
 export default inject(stores => ({
     onFilterChange: stores.nav.filterFiles,

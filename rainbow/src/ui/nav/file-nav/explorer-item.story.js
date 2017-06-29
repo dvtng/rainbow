@@ -3,13 +3,12 @@ import { ExplorerItem } from './explorer-item';
 import NavStyle from '../nav-style';
 import Typography from '../../typography';
 
-const Decorator = ({ children }) => (
+const Decorator = ({ children }) =>
     <Typography>
         <NavStyle>
             {children}
         </NavStyle>
-    </Typography>
-);
+    </Typography>;
 
 export default (
     <Decorator>
@@ -22,9 +21,9 @@ export default (
 export const selectedItem = (
     <Decorator>
         <ExplorerItem
-          storyFile="src/TodoItem.story.js"
-          onSelect={() => {}}
-          isSelected
+            storyFile="src/TodoItem.story.js"
+            onSelect={() => {}}
+            isSelected
         >
             TodoItem.story.js
         </ExplorerItem>

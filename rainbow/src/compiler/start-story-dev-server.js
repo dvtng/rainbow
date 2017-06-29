@@ -20,7 +20,8 @@ const getBaseWebpackConfig = () => {
     return require('./story-default.webpack.config.js');
 };
 
-const getWebpackConfigFor = ({ filename, port }) => Object.assign(
+const getWebpackConfigFor = ({ filename, port }) =>
+    Object.assign(
         {},
         getBaseWebpackConfig(),
         addedWebpackConfig({ filename, port })
@@ -35,7 +36,7 @@ module.exports = ({ storyEntry, port, onDone }) => {
 
     console.log(`Starting webpack dev server at http://localhost:${port}`);
 
-    return new Promise((resolve, reject) => {
+    return new Promise(resolve => {
         const compiler = webpack(
             getWebpackConfigFor({ filename: storyEntry, port })
         );

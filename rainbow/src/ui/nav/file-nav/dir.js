@@ -28,7 +28,7 @@ const isLaterSiblingActive = (parentPath, activeFile, laterSiblings) =>
         isFileInPath(joinPath(parentPath, sibling), activeFile)
     );
 
-const Dir = ({ path, selectedFile, children }) => (
+const Dir = ({ path, selectedFile, children }) =>
     <Ul indent={path ? indent : 0}>
         {children.map((child, i) => {
             const childPath = joinPath(path, child);
@@ -43,30 +43,29 @@ const Dir = ({ path, selectedFile, children }) => (
                 <Li key={child.name}>
                     {path &&
                         <Branch
-                          isFirst={i === 0}
-                          isActive={isFileInPath(childPath, selectedFile)}
-                          shouldJoin={shouldJoin}
+                            isFirst={i === 0}
+                            isActive={isFileInPath(childPath, selectedFile)}
+                            shouldJoin={shouldJoin}
                         />}
                     {path && !isLast && <SiblingJoiner isActive={shouldJoin} />}
                     <ExplorerItem
-                      isActive={isFileInPath(childPath, selectedFile)}
-                      storyFile={!isDir(child) && childPath}
+                        isActive={isFileInPath(childPath, selectedFile)}
+                        storyFile={!isDir(child) && childPath}
                     >
                         {child.name}
                     </ExplorerItem>
                     {isDir(child) &&
                         <Dir
-                          name={child.name}
-                          path={childPath}
-                          selectedFile={selectedFile}
+                            name={child.name}
+                            path={childPath}
+                            selectedFile={selectedFile}
                         >
                             {child.children}
                         </Dir>}
                 </Li>
             );
         })}
-    </Ul>
-);
+    </Ul>;
 
 export default inject(stores => ({
     selectedFile: stores.nav.selectedFile

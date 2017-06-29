@@ -29,19 +29,21 @@ const writeStoryEntry = contents =>
 module.exports = {
     start({ port }) {
         // Write empty story entry and start webpack dev server
-        return writeStoryEntry('').then(() => startStoryDevServer({
-            storyEntry,
-            port,
-            onDone: stats => {
-                events.emit('done', stats.hash);
-            }
-        }));
+        return writeStoryEntry('').then(() =>
+            startStoryDevServer({
+                storyEntry,
+                port,
+                onDone: stats => {
+                    events.emit('done', stats.hash);
+                }
+            })
+        );
     },
 
     setStory(file) {
         // Rewrite the story entry and wait for webpack to recompile
         const escapedFile = file.replace("'", "\\'");
-        const compiledHash = new Promise((resolve, reject) => {
+        const compiledHash = new Promise(resolve => {
             events.once('done', hash => {
                 resolve(hash);
             });

@@ -1,9 +1,8 @@
-const path = require('path');
-
 module.exports = ({ port, filename }) => ({
     entry: [
-        `${require.resolve('webpack-dev-server/client') 
-            }?http://localhost:${port}/`,
+        `${require.resolve(
+            'webpack-dev-server/client'
+        )}?http://localhost:${port}/`,
         // A generated file that then imports the story file
         filename
     ],

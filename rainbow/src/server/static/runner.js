@@ -1,4 +1,4 @@
-/* eslint-disable */
+/* eslint-env browser */
 
 var React = window.React;
 var ReactDOM = window.ReactDOM;
@@ -11,18 +11,20 @@ function error(message) {
 }
 
 function renderStory() {
-    var storyName = window.location.hash.length > 1
-        ? window.location.hash.substr(1)
-        : 'default';
+    var storyName =
+        window.location.hash.length > 1
+            ? window.location.hash.substr(1)
+            : 'default';
     var Component = stories[storyName];
 
     if (Component == null) {
         error('Story "' + storyName + '" was not found. Did you export it?');
         return;
     } else {
-        var element = typeof Component === 'function'
-            ? React.createElement(Component)
-            : Component;
+        var element =
+            typeof Component === 'function'
+                ? React.createElement(Component)
+                : Component;
 
         ReactDOM.render(element, rootEl);
     }

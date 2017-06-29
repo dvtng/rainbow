@@ -24,7 +24,8 @@ export default class NavModel {
 
     @observable fileFilter = '';
 
-    @action loadFileTree = () => {
+    @action
+    loadFileTree = () => {
         fetch('/story-list').then(resp => resp.json()).then(
             action(storyFiles => {
                 this.storyFiles = storyFiles;
@@ -32,28 +33,33 @@ export default class NavModel {
         );
     };
 
-    @action filterFiles = filter => {
+    @action
+    filterFiles = filter => {
         this.fileFilter = filter;
     };
 
-    @action selectFile = storyFile => {
+    @action
+    selectFile = storyFile => {
         this.selectedFile = storyFile;
         this.selectedStory = null;
         this.stories = null;
     };
 
-    @action setStories = stories => {
+    @action
+    setStories = stories => {
         this.stories = sortStories(stories);
         if (!this.stories.includes(this.selectedStory)) {
             this.selectedStory = this.stories[0];
         }
     };
 
-    @action selectStory = story => {
+    @action
+    selectStory = story => {
         this.selectedStory = story;
     };
 
-    @computed get tree() {
+    @computed
+    get tree() {
         let storyFiles = this.storyFiles;
         if (!this.storyFiles) {
             return null;

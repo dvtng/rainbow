@@ -1,0 +1,13 @@
+{
+    "plugins": ["react"],
+    "rules": {
+        "no-console": "error",
+        "react/jsx-uses-react": "error",
+        "react/jsx-uses-vars": "error"
+    },
+    "env": {
+        "browser": true,
+        "node": false,
+        "es6": false
+    }
+}

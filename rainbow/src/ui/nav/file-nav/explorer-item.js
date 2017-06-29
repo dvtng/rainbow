@@ -5,12 +5,10 @@ import Circle from './circle';
 import { itemHeight, circleSize } from './sizes';
 import displayFilename from '../display-filename';
 
-const Container = styled.div`
-    padding: ${(itemHeight - circleSize) / 2}px 0;
-`;
+const Container = styled.div`padding: ${(itemHeight - circleSize) / 2}px 0;`;
 
 const OuterCircle = styled.div`
-    border: 3px solid #275FA6;
+    border: 3px solid #275fa6;
     border-radius: 50%;
     box-sizing: border-box;
     height: ${circleSize + 6}px;
@@ -26,9 +24,7 @@ const Link = styled.a`
     }
 `;
 
-const Text = styled.span`
-    color: #999;
-`;
+const Text = styled.span`color: #999;`;
 
 export const ExplorerItem = ({
     storyFile,
@@ -36,18 +32,19 @@ export const ExplorerItem = ({
     isSelected,
     children,
     onSelect
-}) => (
+}) =>
     <Container>
         <Circle isSelected={isSelected || isActive}>
             {isSelected && <OuterCircle />}
         </Circle>
         {storyFile
             ? <Link title={storyFile} onClick={() => onSelect(storyFile)}>
-                {displayFilename(children)}
-            </Link>
-            : <Text>{children}</Text>}
-    </Container>
-);
+                  {displayFilename(children)}
+              </Link>
+            : <Text>
+                  {children}
+              </Text>}
+    </Container>;
 
 export default inject((stores, props) => ({
     onSelect: stores.nav.selectFile,

@@ -29,12 +29,11 @@ const VLine = Line.extend`
     width: 1px;
 `;
 
-export const Branch = ({ isActive, shouldJoin, isFirst }) => (
+export const Branch = ({ isActive, shouldJoin, isFirst }) =>
     <BranchContainer>
         <HLine isActive={isActive} />
         <VLine isActive={isActive || shouldJoin} isFirst={isFirst} />
-    </BranchContainer>
-);
+    </BranchContainer>;
 
 export const SiblingJoiner = VLine.extend`
     height: calc(100% - ${itemHeight}px);

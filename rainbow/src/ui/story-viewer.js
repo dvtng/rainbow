@@ -14,12 +14,12 @@ class StoryViewer extends Component {
         const { nav } = this.props;
         return nav.selectedFile
             ? <iframe
-              title="story"
-              key={nav.selectedFile}
-              ref={this.setNewIframe}
-              style={{ border: 'none', width: '100%' }}
-              src={`/story/${nav.selectedFile}#${nav.selectedStory}`}
-            />
+                  title="story"
+                  key={nav.selectedFile}
+                  ref={this.setNewIframe}
+                  style={{ border: 'none', width: '100%' }}
+                  src={`/story/${nav.selectedFile}#${nav.selectedStory}`}
+              />
             : null;
     }
 }

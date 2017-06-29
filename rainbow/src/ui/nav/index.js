@@ -1,1 +1,1 @@
-module.exports = require('./nav');
+export { default } from './nav';
