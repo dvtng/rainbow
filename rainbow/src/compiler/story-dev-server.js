@@ -29,15 +29,13 @@ const writeStoryEntry = contents =>
 module.exports = {
     start({ port }) {
         // Write empty story entry and start webpack dev server
-        return writeStoryEntry('').then(() => {
-            return startStoryDevServer({
-                storyEntry,
-                port,
-                onDone: stats => {
-                    events.emit('done', stats.hash);
-                }
-            });
-        });
+        return writeStoryEntry('').then(() => startStoryDevServer({
+            storyEntry,
+            port,
+            onDone: stats => {
+                events.emit('done', stats.hash);
+            }
+        }));
     },
 
     setStory(file) {
@@ -50,8 +48,6 @@ module.exports = {
         });
         return writeStoryEntry(
             `module.exports = require('${escapedFile}');`
-        ).then(() => {
-            return compiledHash;
-        });
+        ).then(() => compiledHash);
     }
 };

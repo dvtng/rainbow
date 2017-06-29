@@ -8,13 +8,14 @@ const Container = styled.div`
     padding: 16px 24px;
 `;
 
-const Explorer = ({ fileTree }) =>
+const Explorer = ({ fileTree }) => (
     <Container>
         <ExplorerFilter />
         {fileTree
             ? <Dir name={fileTree.name} path="">{fileTree.children}</Dir>
             : null}
-    </Container>;
+    </Container>
+);
 
 export default inject(stores => ({
     fileTree: stores.nav.tree

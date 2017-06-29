@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import { Provider } from 'mobx-react';
 import Typography from './typography';
 import Nav from './nav';

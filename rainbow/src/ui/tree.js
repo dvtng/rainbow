@@ -15,9 +15,9 @@ const collapsePaths = node => {
         return isLeaf(onlyChild)
             ? node
             : collapsePaths({
-                  name: node.name + '/' + onlyChild.name,
-                  children: onlyChild.children
-              });
+                name: `${node.name}/${onlyChild.name}`,
+                children: onlyChild.children
+            });
     }
 
     // has multiple children
@@ -34,7 +34,7 @@ const createTree = (node, path) => {
 
     node.children = node.children || [];
     const fragment = path.shift();
-    let child = _.find(node.children, child => child.name === fragment);
+    let child = _.find(node.children, c => c.name === fragment);
 
     if (!child) {
         child = {
@@ -60,7 +60,7 @@ const tree = (files, rootName) => {
 };
 
 const collapsedTree = (files, rootName) => {
-    let root = tree(files, rootName);
+    const root = tree(files, rootName);
     root.children = _.map(root.children, child => collapsePaths(child));
     return root;
 };

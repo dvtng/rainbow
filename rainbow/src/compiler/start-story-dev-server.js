@@ -20,13 +20,11 @@ const getBaseWebpackConfig = () => {
     return require('./story-default.webpack.config.js');
 };
 
-const getWebpackConfigFor = ({ filename, port }) => {
-    return Object.assign(
+const getWebpackConfigFor = ({ filename, port }) => Object.assign(
         {},
         getBaseWebpackConfig(),
         addedWebpackConfig({ filename, port })
     );
-};
 
 let server = null;
 

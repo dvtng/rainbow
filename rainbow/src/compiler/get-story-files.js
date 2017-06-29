@@ -22,8 +22,6 @@ const walk = (dir, skip) =>
         })
     );
 
-module.exports = (cwd = process.cwd()) => {
-    return walk(cwd, dir => dir.endsWith('node_modules'))
+module.exports = (cwd = process.cwd()) => walk(cwd, dir => dir.endsWith('node_modules'))
         .filter(file => filePattern.test(file))
         .map(file => file.substr(cwd.length + 1));
-};

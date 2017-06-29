@@ -36,17 +36,18 @@ export const ExplorerItem = ({
     isSelected,
     children,
     onSelect
-}) =>
+}) => (
     <Container>
         <Circle isSelected={isSelected || isActive}>
             {isSelected && <OuterCircle />}
         </Circle>
         {storyFile
             ? <Link title={storyFile} onClick={() => onSelect(storyFile)}>
-                  {displayFilename(children)}
-              </Link>
+                {displayFilename(children)}
+            </Link>
             : <Text>{children}</Text>}
-    </Container>;
+    </Container>
+);
 
 export default inject((stores, props) => ({
     onSelect: stores.nav.selectFile,

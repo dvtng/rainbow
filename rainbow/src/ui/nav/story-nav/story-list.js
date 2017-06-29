@@ -11,13 +11,13 @@ export const StoryList = ({ stories, selectedStory, onSelect }) =>
     <Container>
         {stories
             ? stories.map(story =>
-                  <StoryItem
-                      key={story}
-                      isSelected={selectedStory === story}
-                      onClick={() => onSelect(story)}
-                  >
-                      {Case.sentence(story)}
-                  </StoryItem>
+                <StoryItem
+                  key={story}
+                  isSelected={selectedStory === story}
+                  onClick={() => onSelect(story)}
+                >
+                    {Case.sentence(story)}
+                </StoryItem>
               )
             : <Skeleton count={3} wrapper={StoryItem} />}
     </Container>;
