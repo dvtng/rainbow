@@ -7,7 +7,7 @@ const Container = styled.button`
     cursor: pointer;
     margin-left: -16px;
     outline: none;
-    padding: 16px;
+    padding: 4px 16px;
 
     & svg {
         fill: #505050;
