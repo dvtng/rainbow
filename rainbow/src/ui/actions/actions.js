@@ -1,7 +1,12 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
 
-const Container = styled.div``;
+const Container = styled.div`
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+`;
 
 const bubble = keyframes`
     0% {
@@ -36,11 +41,14 @@ const Action = ({ action, index }) =>
 
 const Actions = ({ actions }) =>
     <Container>
-        {actions
-            .slice(0, 5)
-            .map((action, i) =>
-                <Action key={action} action={action} index={i} />
-            )}
+        Actions
+        <div>
+            {actions
+                .slice(0, 5)
+                .map((action, i) =>
+                    <Action key={action} action={action} index={i} />
+                )}
+        </div>
     </Container>;
 
 export default Actions;

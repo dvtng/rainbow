@@ -1,7 +1,24 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 import Typography from '../typography';
 import NavStyle from '../nav/nav-style';
 import Actions from './actions';
+
+const Container = styled.div`
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`;
+
+const Button = styled.button`
+    background-color: #444;
+    border: none;
+    color: #ddd;
+    cursor: pointer;
+    font-size: inherit;
+    padding: 16px;
+`;
 
 class ActionProducer extends Component {
     counter = 0;
@@ -18,10 +35,10 @@ class ActionProducer extends Component {
 
     render() {
         return (
-            <div>
-                <button onClick={this.onClick}>Click me</button>
+            <Container>
+                <Button onClick={this.onClick}>Click me</Button>
                 <Actions actions={this.state.actions} />
-            </div>
+            </Container>
         );
     }
 }
@@ -29,9 +46,7 @@ class ActionProducer extends Component {
 export default (
     <Typography>
         <NavStyle>
-            <div style={{ height: 200 }}>
-                <ActionProducer />
-            </div>
+            <ActionProducer />
         </NavStyle>
     </Typography>
 );
