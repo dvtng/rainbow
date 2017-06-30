@@ -11,7 +11,7 @@ const split = file => pattern.exec(file);
 const Container = styled.div`
     align-items: center;
     display: flex;
-    margin-bottom: 8px;
+    margin-bottom: 16px;
     padding: 0 24px;
 `;
 
@@ -19,6 +19,8 @@ const Path = styled.div`
     color: #808080;
     margin-bottom: 4px;
 `;
+
+const File = styled.div`line-height: 1;`;
 
 export const FileInfo = ({ file, goBack }) => {
     if (!file) return null;
@@ -31,10 +33,10 @@ export const FileInfo = ({ file, goBack }) => {
                 <Path>
                     {parts ? parts[1] : ''}
                 </Path>
-                <div>
+                <File>
                     <Circle isFilled isSelected />
                     {displayFilename(parts ? parts[2] : file)}
-                </div>
+                </File>
             </div>
         </Container>
     );

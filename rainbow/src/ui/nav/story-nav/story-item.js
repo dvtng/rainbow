@@ -9,7 +9,7 @@ const StoryItem = styled.a`
     border-color: ${props => (props.isSelected ? '#C4C4C4' : 'transparent')};
     cursor: pointer;
     display: block;
-    padding: 10px 24px 10px 22px;
+    padding: 10px 16px;
     transition: 0.2s all;
 
     &:hover {

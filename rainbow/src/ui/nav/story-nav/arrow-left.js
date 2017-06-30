@@ -20,7 +20,7 @@ const Container = styled.button`
 `;
 
 const ArrowLeft = () =>
-    <svg width="15" height="24" viewBox="4.5 0 15 24">
+    <svg width="10" height="22" viewBox="4.5 0 15 24">
         <path d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z" />
     </svg>;
 
