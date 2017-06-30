@@ -4,11 +4,12 @@ import { inject } from 'mobx-react';
 import Circle from './circle';
 import { itemHeight, circleSize } from './sizes';
 import displayFilename from '../display-filename';
+import * as colors from '../../colors';
 
 const Container = styled.div`padding: ${(itemHeight - circleSize) / 2}px 0;`;
 
 const OuterCircle = styled.div`
-    border: 3px solid #275fa6;
+    border: 3px solid ${colors.brightBlue};
     border-radius: 50%;
     box-sizing: border-box;
     height: ${circleSize + 6}px;

@@ -1,8 +1,10 @@
 import styled from 'styled-components';
+import * as colors from '../../colors';
 import { circleSize } from './sizes';
 
 const Circle = styled.div`
-    background: ${props => (props.isFilled ? '#275FA6' : 'transparent')};
+    background: ${props =>
+        props.isFilled ? colors.brightBlue : 'transparent'};
     border: 1px solid;
     border-color: ${props => (props.isSelected ? '#fff' : '#4f4f4f')};
     border-radius: 50%;
