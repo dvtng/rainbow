@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
-import styled from 'styled-components';
-
-const Error = styled.div`
-    background-color: #bf2600;
-    color: #fff;
-`;
+import StoryError from './story-error';
 
 class StoryViewer extends Component {
     setNewIframe = iframe => {
@@ -31,16 +26,7 @@ class StoryViewer extends Component {
     render() {
         const { selectedFile, storyError } = this.props;
         return storyError
-            ? <Error>
-                  <h2>
-                      {storyError.name
-                          ? `${storyError.name}: ${storyError.message}`
-                          : storyError.message}
-                  </h2>
-                  <p>
-                      {storyError.stack}
-                  </p>
-              </Error>
+            ? <StoryError error={storyError} />
             : selectedFile
               ? <iframe
                     title="story"
