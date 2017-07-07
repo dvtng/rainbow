@@ -6,6 +6,7 @@ import StoryViewer from './story-viewer';
 import NavModel from './nav-model';
 
 const Frame = Typography.extend`
+    background-color: #606060;
     display: flex;
     flex-direction: row;
     height: 100%;

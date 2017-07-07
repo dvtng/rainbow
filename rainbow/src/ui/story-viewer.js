@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
+import styled from 'styled-components';
 import StoryError from './story-error';
+
+const Container = styled.div`
+    box-sizing: border-box;
+    display: flex;
+    margin: 16px;
+    width: 100%;
+`;
 
 class StoryViewer extends Component {
     setNewIframe = iframe => {
@@ -12,10 +20,8 @@ class StoryViewer extends Component {
             this.props.setStories(stories);
         });
 
-        const that = this;
         iframe.contentWindow.addEventListener('error', error => {
-            console.log(error);
-            that.props.storyErrored(error);
+            this.props.storyErrored(error);
         });
     };
 
@@ -28,13 +34,15 @@ class StoryViewer extends Component {
         return storyError
             ? <StoryError error={storyError} />
             : selectedFile
-              ? <iframe
-                    title="story"
-                    key={selectedFile}
-                    ref={this.setNewIframe}
-                    style={{ border: 'none', width: '100%' }}
-                    src={this.getSrc()}
-                />
+              ? <Container>
+                    <iframe
+                        title="story"
+                        key={selectedFile}
+                        ref={this.setNewIframe}
+                        style={{ border: 'none', width: '100%' }}
+                        src={this.getSrc()}
+                    />
+                </Container>
               : null;
     }
 }
