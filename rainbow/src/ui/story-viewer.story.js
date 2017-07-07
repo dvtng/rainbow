@@ -4,20 +4,24 @@ import NavModel from './nav-model';
 import { Provider } from 'mobx-react';
 import Typography from './typography';
 
-export default () => {
+export const exampleStory = () => <p>Hello</p>;
+
+export const showingStory = () => {
     const nav = new NavModel({});
     nav.selectFile('path/to/story.js');
     nav.setStories(['default']);
     return (
         <Typography>
             <Provider nav={nav}>
-                <StoryViewer src={'/broken-story.html'} />
+                <StoryViewer
+                    src={'/story/src/ui/story-viewer.story.js#exampleStory'}
+                />
             </Provider>
         </Typography>
     );
 };
 
-export const rendersError = () => {
+export const showingError = () => {
     const nav = new NavModel({});
     try {
         const a = 1;
